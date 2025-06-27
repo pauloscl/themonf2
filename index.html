@@ -122,7 +122,7 @@
 
         <!-- Adicione logo após o <body> -->
 <button class="mode-toggle" aria-label="Alternar modo escuro/claro" onclick="toggleMode()">
-  🌓
+  <span id="mode-icon">🌙</span>
 </button>
 
       
@@ -169,6 +169,12 @@
 <script>
   function toggleMode() {
     document.body.classList.toggle("dark-mode");
+
+    const icon = document.getElementById("mode-icon");
+    const isDark = document.body.classList.contains("dark-mode");
+
+    // Alterna o ícone conforme o modo
+    icon.textContent = isDark ? "☀️" : "🌙";
   }
 </script>
 

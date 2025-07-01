@@ -1,0 +1,97 @@
+body {
+  background-color: #fef4f7b9;
+  color: #373b3d;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.container-box {
+  background-color: #fef4f7b9;
+  border-radius: 12px;
+  padding: 30px;
+  margin-top: 50px;
+  max-width: 600px;
+}
+
+.btn-chat {
+  background-color: #559dc6;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 30px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.btn-chat:hover {
+  background-color: #3a7da1;
+  transform: scale(1.05);
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 60px;
+  padding: 20px 0;
+  color: #6c757d;
+}
+
+.social-icon {
+  margin: 0 10px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+  color: #007bff;
+  transform: scale(1.2);
+}
+
+.texto-plataforma {
+  text-align: justify;
+  hyphens: auto;
+  color: #382c2c;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #1e1e2f !important;
+  color: #f8f9fa !important;
+}
+
+.dark-mode .container-box {
+  background-color: #1e1e2f !important;
+}
+
+.dark-mode footer {
+  color: #bcbcbc !important;
+}
+
+.dark-mode .texto-plataforma {
+  color: #f1f1f1;
+}
+
+.mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.mode-toggle:hover {
+  transform: rotate(180deg);
+  background-color: #eee;
+}

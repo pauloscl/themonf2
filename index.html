@@ -58,6 +58,8 @@
       max-width: 180px;
       height: auto;
       margin-bottom: 1rem;
+      border-radius: 50%;
+      box-shadow: var(--box-shadow);
     }
     
     .brand-title {
@@ -121,6 +123,9 @@
       transition: var(--transition);
       border: 1px solid rgba(0, 0, 0, 0.05);
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     
     .app-card:hover {
@@ -144,6 +149,7 @@
     .app-description {
       font-size: 0.95rem;
       color: var(--text-color);
+      flex-grow: 1;
     }
     
     .btn-themonf {
@@ -158,6 +164,7 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+      text-decoration: none;
     }
     
     .btn-themonf:hover {
@@ -237,6 +244,34 @@
       transform: translateY(-3px);
     }
     
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 4rem 1rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .featured-apps {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
     @media (max-width: 768px) {
       .brand-title {
         font-size: 2rem;
@@ -248,6 +283,10 @@
       
       .action-buttons {
         grid-template-columns: 1fr;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
       }
     }
   </style>
@@ -261,9 +300,18 @@
   <div class="container-main">
     <!-- Cabeçalho -->
     <header class="logo-container" data-aos="fade-up">
-      <img src="themonf.jpeg" alt="Logo THEMONF" class="logo" />
+      <img src="https://via.placeholder.com/180/2c5aa0/FFFFFF?text=THEMONF" alt="Logo THEMONF" class="logo" />
       <h1 class="brand-title">T H E M O N F</h1>
     </header>
+
+    <!-- Seção Hero -->
+    <section class="hero-section" data-aos="fade-up">
+      <h2 class="hero-title">Transforme Sua Vida com a THEMONF</h2>
+      <p class="hero-subtitle">
+        Uma plataforma completa que une oportunidades de renda, desenvolvimento pessoal, 
+        conexões humanas e bem-estar em um único ecossistema inovador.
+      </p>
+    </section>
 
     <!-- Seção de Introdução -->
     <section class="section" data-aos="fade-up">
@@ -351,6 +399,23 @@
           <h3 class="app-name">Socimonf</h3>
           <p class="app-description">Interaja e compartilhe conteúdo numa rede social sem algoritmos invasivos.</p>
         </div>
+        
+        <!-- Novos cards adicionados -->
+        <div class="app-card">
+          <div class="app-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <h3 class="app-name">EADmonf</h3>
+          <p class="app-description">Plataforma de cursos online para desenvolvimento contínuo e capacitação profissional.</p>
+        </div>
+        
+        <div class="app-card">
+          <div class="app-icon">
+            <i class="fas fa-podcast"></i>
+          </div>
+          <h3 class="app-name">Rádio THEMONF</h3>
+          <p class="app-description">Web rádio com mensagens de alto valor para sua evolução pessoal e profissional.</p>
+        </div>
       </div>
     </section>
 
@@ -374,14 +439,12 @@
         <a href="https://themonf.pythonanywhere.com/projetoevoluir" class="btn btn-themonf">
           <i class="fas fa-seedling"></i> Projeto Evoluir
         </a>
-       <!--
         <a href="https://themonf.pythonanywhere.com/radio" class="btn btn-themonf">
           <i class="fas fa-podcast"></i> Rádio THEMONF
         </a>
         <a href="https://themonf.pythonanywhere.com/ead/cursos" class="btn btn-themonf">
           <i class="fas fa-book-open"></i> EADmonf
         </a>
-        -->
         <a href="https://wa.me/5591985230716?text=Olá!%20Quero%20saber%20sobre%20o%20THEMONF" class="btn btn-themonf btn-whatsapp">
           <i class="fab fa-whatsapp"></i> Contatar
         </a>

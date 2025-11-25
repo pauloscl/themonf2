@@ -76,13 +76,13 @@
     .navbar-nav .nav-link {
       color: #E0E0FF !important;
       font-weight: 500;
-      font-size: 0.9rem;
-      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.6rem;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       transition: all 0.3s ease;
-      border-radius: 10px;
+      border-radius: 8px;
     }
     
     .navbar-nav .nav-link:hover {
@@ -91,7 +91,7 @@
     }
     
     .nav-item i {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     
     .navbar-toggler {
@@ -102,6 +102,13 @@
     
     .navbar-toggler:focus {
       box-shadow: none;
+    }
+    
+    .divider {
+      width: 1px;
+      height: 25px;
+      background-color: rgba(255,255,255,0.3);
+      margin: auto 0.5rem;
     }
     
     /* ======== HEADER/HERO ======== */
@@ -355,6 +362,17 @@
     }
     
     /* ======== RESPONSIVE ======== */
+    @media (max-width: 991px) {
+      .divider {
+        display: none;
+      }
+      
+      .navbar-nav .nav-link {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+    
     @media (max-width: 768px) {
       .brand-title {
         font-size: 2rem;
@@ -395,7 +413,7 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-main">
       <a class="navbar-brand" href="#">T<span>HEMONF</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -409,34 +427,53 @@
               <i class="fas fa-handshake"></i> Trademonf
             </a>
           </li>
+          <li class="divider d-none d-lg-block"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-shopping-bag"></i> Shopmonf
             </a>
           </li>
+          <li class="divider d-none d-lg-block"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-heart"></i> Lovemonf
             </a>
           </li>
+          <li class="divider d-none d-lg-block"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-comments"></i> Telemonf
             </a>
           </li>
+          <li class="divider d-none d-lg-block"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
-              <i class="fas fa-graduation-cap"></i> Gradumonf
+              <i class="fas fa-chart-line"></i> Gradumonf
             </a>
           </li>
+          <li class="divider d-none d-lg-block"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
-              <i class="fas fa-briefcase"></i> Promonf
+              <i class="fas fa-calendar-check"></i> Promonf
             </a>
           </li>
+          <li class="divider d-none d-lg-block"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-users"></i> Socimonf
+            </a>
+          </li>
+          <!-- Aplicações adicionadas -->
+          <li class="divider d-none d-lg-block"></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#ecossistema">
+              <i class="fas fa-graduation-cap"></i> EADmonf
+            </a>
+          </li>
+          <li class="divider d-none d-lg-block"></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#ecossistema">
+              <i class="fas fa-microphone-alt"></i> Rádio
             </a>
           </li>
         </ul>
@@ -450,10 +487,10 @@
   </button>
 
   <!-- Hero Section -->
-  <section class="hero-section" data-aos="fade-up">
+  <section class="hero-section" data-aos="fade-up" style="margin-top: 70px;">
     <div class="container-main">
       <div class="logo-container">
-        <img src="https://i.imgur.com/5W2Vk9E.png" alt="Logo THEMONF" class="logo" onerror="this.src='https://via.placeholder.com/180/3A0CA3/FFFFFF?text=THEMONF'" />
+        <img src="themonf.jpeg" alt="Logo THEMONF" class="logo" onerror="this.src='https://via.placeholder.com/180/3A0CA3/FFFFFF?text=THEMONF'" />
         <h1 class="brand-title">T<span>HEMONF</span></h1>
         <p class="hero-subtitle">
           Uma plataforma completa que une oportunidades de renda, desenvolvimento pessoal, 
@@ -662,6 +699,7 @@
       const logo = document.querySelector('.logo');
       logo.addEventListener('error', function() {
         this.src = 'https://via.placeholder.com/180/3A0CA3/FFFFFF?text=THEMONF';
+        this.alt = 'Logo THEMONF - Placeholder';
       });
     });
   </script>

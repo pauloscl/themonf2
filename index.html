@@ -1,504 +1,442 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TERAMONF - Plataforma de Terapia Online</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THEMONF - Plataforma de renda e desenvolvimento pessoal</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  
+  <style>
+    :root {
+      --primary-color: #2c5aa0;
+      --secondary-color: #1a73e8;
+      --accent-color: #34a853;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --text-color: #333;
+      --border-radius: 12px;
+      --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
     
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    .dark-mode {
+      --primary-color: #4285f4;
+      --secondary-color: #8ab4f8;
+      --accent-color: #34a853;
+      --light-color: #202124;
+      --dark-color: #e8eaed;
+      --text-color: #e8eaed;
+      --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
     
-    <style>
-        :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --accent: #f093fb;
-            --light: #f8f9fa;
-            --dark: #2d3748;
-            --success: #48bb78;
-        }
-        
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: var(--dark);
-        }
-        
-        .landing-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            overflow: hidden;
-            margin: 2rem auto;
-            max-width: 1200px;
-        }
-        
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: rgba(255,255,255,0.1);
-            transform: rotate(30deg);
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .hero-subtitle {
-            font-size: 1.3rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 1rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: white;
-            font-size: 2rem;
-        }
-        
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .app-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .app-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        
-        .app-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border: none;
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-        
-        .btn-outline-primary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-primary:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .testimonial-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 1rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--primary);
-        }
-        
-        .nav-pills .nav-link.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50px;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-color);
+      background-color: var(--light-color);
+      transition: var(--transition);
+      line-height: 1.6;
+    }
+    
+    .container-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    
+    .logo-container {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .logo {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+    
+    .brand-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+    }
+    
+    .section {
+      margin-bottom: 4rem;
+      padding: 2rem 0;
+    }
+    
+    .section-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--accent-color);
+      margin: 0.5rem auto;
+    }
+    
+    .texto-plataforma {
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    
+    .highlight-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: var(--box-shadow);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .app-card {
+      background: var(--light-color);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+    
+    .app-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .app-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .app-name {
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .app-description {
+      font-size: 0.95rem;
+      color: var(--text-color);
+    }
+    
+    .btn-themonf {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.8rem 1.5rem;
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-themonf:hover {
+      background: var(--secondary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+    }
+    
+    .btn-whatsapp:hover {
+      background: #128C7E;
+      color: white;
+    }
+    
+    .btn-primary {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background: var(--secondary-color);
+      border-color: var(--secondary-color);
+    }
+    
+    .action-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+    
+    .mode-toggle:hover {
+      transform: scale(1.1);
+    }
+    
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .social-links {
+      margin-bottom: 1rem;
+    }
+    
+    .social-icon {
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+      transition: var(--transition);
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-3px);
+    }
+    
+    @media (max-width: 768px) {
+      .brand-title {
+        font-size: 2rem;
+      }
+      
+      .app-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .action-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h1 class="hero-title">TERAMONF</h1>
-                    <p class="hero-subtitle">Plataforma de Terapia Online - Conexão que Transforma Vidas</p>
-                    <div class="mt-4">
-                        <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg me-3">
-                            <i class="fas fa-rocket me-2"></i>Começar Agora
-                        </a>
-                        <a href="#features" class="btn btn-outline-light btn-lg">
-                            <i class="fas fa-play-circle me-2"></i>Conhecer Mais
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <button class="mode-toggle" aria-label="Alternar modo escuro/claro" onclick="toggleMode()">
+    <span id="mode-icon">🌙</span>
+  </button>
+
+  <div class="container-main">
+    <!-- Cabeçalho -->
+    <header class="logo-container" data-aos="fade-up">
+      <img src="themonf.jpeg" alt="Logo THEMONF" class="logo" />
+      <h1 class="brand-title">T H E M O N F</h1>
+    </header>
+
+    <!-- Seção de Introdução -->
+    <section class="section" data-aos="fade-up">
+      <h2 class="section-title">Uma Plataforma Completa para Seu Desenvolvimento</h2>
+      <p class="texto-plataforma">
+        A <strong>THEMONF</strong> é uma plataforma digital inovadora que conecta pessoas a 
+        <strong>oportunidades de crescimento financeiro, pessoal, social e de bem-estar</strong>.  
+        Mais do que uma rede, é um <strong>ecossistema integrado</strong> que une trabalho, conhecimento, relacionamento e comunicação em um só lugar.
+      </p>
     </section>
 
-    <!-- Main Content -->
-    <div class="landing-container">
-        <div class="container py-5">
-            
-            <!-- Introdução -->
-            <section class="row justify-content-center mb-5">
-                <div class="col-lg-10 text-center">
-                    <h2 class="section-title">Sua Jornada de Bem-Estar Começa Aqui</h2>
-                    <p class="lead text-muted">
-                        A <strong>TERAMONF</strong> é a solução completa para terapia online, conectando 
-                        terapeutas qualificados a pacientes em busca de crescimento pessoal e equilíbrio emocional.
-                    </p>
-                </div>
-            </section>
+    <!-- Seção Trademonf -->
+    <section class="section" data-aos="fade-up">
+      <div class="highlight-box">
+        <h2 class="section-title">Trademonf - O Coração da Plataforma</h2>
+        <p class="texto-plataforma">
+          No centro do ecossistema está o <strong>Trademonf</strong> — o núcleo inteligente da plataforma — 
+          onde você realiza tarefas, participa de desafios e movimenta a <strong>Tcoin</strong>, 
+          nossa moeda digital exclusiva.  
+          O Trademonf é o coração da economia THEMONF, impulsionando o progresso individual e coletivo.
+        </p>
+      </div>
+    </section>
 
-            <!-- Estatísticas -->
-            <section class="row text-center mb-5">
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">500+</div>
-                    <p class="text-muted">Usuários Ativos</p>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">2K+</div>
-                    <p class="text-muted">Sessões Realizadas</p>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">50+</div>
-                    <p class="text-muted">Profissionais</p>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">99%</div>
-                    <p class="text-muted">Satisfação</p>
-                </div>
-            </section>
-
-            <!-- Features -->
-            <section id="features" class="mb-5">
-                <h2 class="section-title">Por que Escolher a TERAMONF?</h2>
-                <div class="row">
-                    <div class="col-lg-4 mb-4">
-                        <div class="feature-card text-center">
-                            <div class="feature-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h4>Segurança Total</h4>
-                            <p class="text-muted">
-                                Ambiente 100% seguro e compliance com LGPD. Suas sessões são protegidas 
-                                com criptografia de ponta a ponta.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="feature-card text-center">
-                            <div class="feature-icon">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <h4>Sessões Online</h4>
-                            <p class="text-muted">
-                                Atendimento por vídeo de qualquer lugar. Plataforma integrada com 
-                                tecnologia de conferência profissional.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="feature-card text-center">
-                            <div class="feature-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <h4>Flexibilidade</h4>
-                            <p class="text-muted">
-                                Agende sessões no seu horário preferido. Agenda flexível com 
-                                lembretes automáticos.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Para Pacientes -->
-            <section class="mb-5">
-                <h2 class="section-title">Para Pacientes</h2>
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="feature-card">
-                            <h3><i class="fas fa-search me-2 text-primary"></i>Encontre o Terapeuta Ideal</h3>
-                            <p class="text-muted">
-                                Busque por especialidade, abordagem, disponibilidade e avaliações. 
-                                Encontre o profissional que mais combina com você.
-                            </p>
-                            
-                            <h3 class="mt-4"><i class="fas fa-calendar-check me-2 text-primary"></i>Agendamento Simples</h3>
-                            <p class="text-muted">
-                                Agende sessões em poucos cliques. Escolha data, horário e 
-                                receba confirmação instantânea.
-                            </p>
-                            
-                            <h3 class="mt-4"><i class="fas fa-lock me-2 text-primary"></i>Privacidade Garantida</h3>
-                            <p class="text-muted">
-                                Suas sessões são confidenciais. Ambiente seguro para 
-                                você se expressar livremente.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                             alt="Terapia Online" class="img-fluid rounded-3">
-                    </div>
-                </div>
-            </section>
-
-            <!-- Para Terapeutas -->
-            <section class="mb-5">
-                <h2 class="section-title">Para Terapeutas</h2>
-                <div class="row align-items-center">
-                    <div class="col-lg-6 order-lg-2">
-                        <div class="feature-card">
-                            <h3><i class="fas fa-users me-2 text-primary"></i>Amplie Sua Clínica</h3>
-                            <p class="text-muted">
-                                Atenda pacientes de qualquer lugar do Brasil. Expanda seu 
-                                alcance sem limites geográficos.
-                            </p>
-                            
-                            <h3 class="mt-4"><i class="fas fa-chart-line me-2 text-primary"></i>Gestão Simplificada</h3>
-                            <p class="text-muted">
-                                Agenda integrada, lembretes automáticos, histórico de sessões 
-                                e relatórios detalhados.
-                            </p>
-                            
-                            <h3 class="mt-4"><i class="fas fa-money-bill-wave me-2 text-primary"></i>Receba com Segurança</h3>
-                            <p class="text-muted">
-                                Sistema de pagamento integrado com PIX e cartão. 
-                                Recebimentos rápidos e seguros.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 order-lg-1">
-                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                             alt="Profissional de Saúde" class="img-fluid rounded-3">
-                    </div>
-                </div>
-            </section>
-
-            <!-- Como Funciona -->
-            <section class="mb-5">
-                <h2 class="section-title">Como Funciona</h2>
-                <div class="row text-center">
-                    <div class="col-md-4 mb-4">
-                        <div class="feature-card">
-                            <div class="feature-icon" style="width: 70px; height: 70px;">
-                                <i class="fas fa-user-plus"></i>
-                            </div>
-                            <h4>1. Cadastre-se</h4>
-                            <p class="text-muted">
-                                Crie sua conta em menos de 2 minutos. 
-                                Escolha entre paciente ou terapeuta.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="feature-card">
-                            <div class="feature-icon" style="width: 70px; height: 70px;">
-                                <i class="fas fa-search"></i>
-                            </div>
-                            <h4>2. Encontre</h4>
-                            <p class="text-muted">
-                                Pacientes: encontre terapeutas. 
-                                Terapeutas: seja encontrado.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="feature-card">
-                            <div class="feature-icon" style="width: 70px; height: 70px;">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <h4>3. Conecte-se</h4>
-                            <p class="text-muted">
-                                Agende e realize sessões online. 
-                                Conexão segura e de qualidade.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CTA Final -->
-            <section class="text-center py-5">
-                <h2 class="section-title mb-4">Pronto para Começar sua Jornada?</h2>
-                <p class="lead text-muted mb-4">
-                    Junte-se à comunidade de bem-estar que já transformou milhares de vidas
-                </p>
-                <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
-                    <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">
-                        <i class="fas fa-user-plus me-2"></i>Cadastrar Agora
-                    </a>
-                    <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary btn-lg">
-                        <i class="fas fa-sign-in-alt me-2"></i>Fazer Login
-                    </a>
-                </div>
-            </section>
+    <!-- Seção Aplicativos -->
+    <section class="section" data-aos="fade-up">
+      <h2 class="section-title">Ecossistema Completo de Aplicações</h2>
+      <p class="texto-plataforma">
+        Ao redor do núcleo, você encontra aplicações que ampliam a experiência e promovem qualidade de vida em diversas dimensões:
+      </p>
+      
+      <div class="app-grid">
+        <div class="app-card">
+          <div class="app-icon">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <h3 class="app-name">Trademonf</h3>
+          <p class="app-description">Realize tarefas e conquiste recompensas em Tcoins.</p>
         </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="text-center text-white py-4">
-        <div class="container">
-            <p class="mb-2">
-                <span class="opacity-75">Suporte:</span>
-                <a href="https://wa.me/5591985230716" class="text-white text-decoration-none ms-2">
-                    <i class="fab fa-whatsapp me-1"></i>WhatsApp
-                </a>
-            </p>
-            <p class="mb-0 opacity-75">
-                &copy; 2025 TERAMONF - Desenvolvido com ❤️ para transformar vidas
-            </p>
+        
+        <div class="app-card">
+          <div class="app-icon">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <h3 class="app-name">Shopmonf</h3>
+          <p class="app-description">Compre produtos e serviços com praticidade.</p>
         </div>
+        
+        <div class="app-card">
+          <div class="app-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3 class="app-name">Lovemonf</h3>
+          <p class="app-description">Conecte-se com pessoas e construa relacionamentos reais.</p>
+        </div>
+        
+        <div class="app-card">
+          <div class="app-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3 class="app-name">Telemonf</h3>
+          <p class="app-description">Comunique-se via texto com liberdade e segurança.</p>
+        </div>
+        
+        <div class="app-card">
+          <div class="app-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3 class="app-name">Gradumonf</h3>
+          <p class="app-description">Aprenda, ensine e compartilhe conhecimento.</p>
+        </div>
+        
+        <div class="app-card">
+          <div class="app-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h3 class="app-name">Promonf</h3>
+          <p class="app-description">Divulgue seus serviços dentro da comunidade.</p>
+        </div>
+        
+        <div class="app-card">
+          <div class="app-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="app-name">Socimonf</h3>
+          <p class="app-description">Interaja e compartilhe conteúdo numa rede social sem algoritmos invasivos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Missão -->
+    <section class="section" data-aos="fade-up">
+      <h2 class="section-title">Nossa Missão</h2>
+      <p class="texto-plataforma">
+        A missão da THEMONF é <strong>melhorar a vida das pessoas</strong>, promovendo renda, aprendizado, 
+        conexão humana e equilíbrio emocional — tudo em um ambiente digital 
+        <strong>inclusivo, sustentável e próspero</strong>.
+      </p>
+    </section>
+
+    <!-- Seção Ações -->
+    <section class="section" data-aos="fade-up">
+      <h2 class="section-title">Comece Agora</h2>
+      <div class="action-buttons">
+        <a href="https://themonf.pythonanywhere.com/user-plan" class="btn btn-themonf">
+          <i class="fas fa-chart-line"></i> Plano de Negócios
+        </a>
+        <a href="https://themonf.pythonanywhere.com/projetoevoluir" class="btn btn-themonf">
+          <i class="fas fa-seedling"></i> Projeto Evoluir
+        </a>
+        <a href="https://themonf.pythonanywhere.com/radio" class="btn btn-themonf">
+          <i class="fas fa-podcast"></i> Rádio THEMONF
+        </a>
+        <a href="https://themonf.pythonanywhere.com/ead/cursos" class="btn btn-themonf">
+          <i class="fas fa-book-open"></i> EADmonf
+        </a>
+        <a href="https://wa.me/5591985230716?text=Olá!%20Quero%20saber%20sobre%20o%20THEMONF" class="btn btn-themonf btn-whatsapp">
+          <i class="fab fa-whatsapp"></i> Contatar
+        </a>
+        <a href="https://themonf.pythonanywhere.com" class="btn btn-themonf btn-primary">
+          <i class="fas fa-sign-in-alt"></i> Entrar na Plataforma
+        </a>
+      </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer data-aos="fade-up">
+      <div class="social-links">
+        <span>Suporte:</span>
+        <a href="https://wa.me/5591985230716" class="text-success social-icon">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.facebook.com/sergio.themonf/" class="text-primary social-icon">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </div>
+      <p class="mt-3 mb-0">&copy; 2025 - Desenvolvido por Paulo THEMONF</p>
     </footer>
+  </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Animação simples para os números
-        function animateNumbers() {
-            const counters = document.querySelectorAll('.stat-number');
-            counters.forEach(counter => {
-                const target = parseInt(counter.textContent);
-                if (!isNaN(target)) {
-                    let current = 0;
-                    const increment = target / 30;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            counter.textContent = target + (counter.textContent.includes('+') ? '+' : '%');
-                            clearInterval(timer);
-                        } else {
-                            counter.textContent = Math.floor(current);
-                        }
-                    }, 50);
-                }
-            });
-        }
-
-        // Iniciar animação quando a página carregar
-        document.addEventListener('DOMContentLoaded', function() {
-            animateNumbers();
-            
-            // Smooth scroll para links internos
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Inicialização AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+    
+    // Função para alternar modo claro/escuro
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      const icon = document.getElementById('mode-icon');
+      
+      if (document.body.classList.contains('dark-mode')) {
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+    
+    // Verificar preferência salva
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('mode-icon').textContent = '☀️';
+      }
+    });
+  </script>
 </body>
 </html>

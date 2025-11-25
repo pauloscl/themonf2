@@ -36,6 +36,7 @@
       line-height: 1.6;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
     
     .container-main {
@@ -89,6 +90,7 @@
       border: none;
       background: none;
       color: white;
+      padding: 0.25rem 0.5rem;
     }
     
     .navbar-toggler:focus {
@@ -106,11 +108,12 @@
     .hero-section {
       background: linear-gradient(135deg, var(--secondary-color) 0%, #560BAD 100%);
       color: white;
-      padding: 5rem 0 3rem;
+      padding: 4rem 0 2rem;
       text-align: center;
       border-bottom-left-radius: 90px;
       border-bottom-right-radius: 90px;
       margin-bottom: 3rem;
+      margin-top: 60px;
     }
     
     .logo-container {
@@ -332,6 +335,16 @@
         font-size: 0.9rem;
         padding: 0.4rem 0.8rem;
       }
+      
+      /* Remove espaçamento vertical no menu mobile */
+      .navbar-collapse {
+        margin-top: 0;
+        padding-top: 0;
+      }
+      
+      .navbar-nav {
+        margin-top: 0.5rem;
+      }
     }
     
     @media (max-width: 768px) {
@@ -348,9 +361,10 @@
       }
       
       .hero-section {
-        padding: 4rem 0 2rem;
+        padding: 3.5rem 0 1.5rem;
         border-bottom-left-radius: 60px;
         border-bottom-right-radius: 60px;
+        margin-top: 55px;
       }
       
       .navbar-nav .nav-link {
@@ -368,6 +382,30 @@
         margin-right: 0;
         margin-bottom: 0.5rem;
       }
+      
+      /* Ajustes específicos para mobile */
+      .navbar {
+        padding: 0.4rem 0;
+      }
+      
+      .container-main {
+        padding: 0 0.8rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero-section {
+        margin-top: 50px;
+        padding: 3rem 0 1rem;
+      }
+      
+      .brand-title {
+        font-size: 1.8rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -377,7 +415,7 @@
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-main">
       <a class="navbar-brand" href="#">T<span>HEMONF</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
 
@@ -443,11 +481,11 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero-section" data-aos="fade-up" style="margin-top: 60px;">
+  <section class="hero-section" data-aos="fade-up">
     <div class="container-main">
       <div class="logo-container">
         <img src="themonf.jpeg" alt="Logo THEMONF" class="logo" onerror="this.src='https://via.placeholder.com/180/3A0CA3/FFFFFF?text=THEMONF'" />
-        <!-- <h1 class="brand-title">T<span>HEMONF</span></h1> -->
+        <h1 class="brand-title">T<span>HEMONF</span></h1>
         <p class="hero-subtitle">
           Uma plataforma completa que une oportunidades de renda, desenvolvimento pessoal, 
           conexões humanas e bem-estar em um único ecossistema inovador.
@@ -630,6 +668,16 @@
         this.src = 'https://via.placeholder.com/180/3A0CA3/FFFFFF?text=THEMONF';
         this.alt = 'Logo THEMONF - Placeholder';
       });
+      
+      // Prevenir comportamento de scroll estranho
+      window.scrollTo(0, 0);
+    });
+    
+    // Prevenir problemas de scroll ao carregar a página
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+      }, 100);
     });
   </script>
 </body>

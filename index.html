@@ -1,3 +1,5 @@
+Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o botão "Entrar" mais visível:
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,7 +12,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   
@@ -45,63 +47,182 @@
       padding: 0 1rem;
     }
     
-    /* ======== NAVBAR ======== */
+    /* ======== NAVBAR REFORMULADA ======== */
+    /* Logo reduzido e à esquerda, THEMONF ao lado, depois menu à direita */
     .navbar {
       background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      transition: background 0.3s ease;
       padding: 0.5rem 0;
     }
     
-    .navbar-brand {
-      font-size: 1.5rem;
-      color: #fff !important;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-right: 1rem;
+    /* Container flexível para alinhar tudo na mesma linha */
+    .navbar .container-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
     
-    .navbar-brand span {
+    /* Grupo da esquerda: logo reduzido + texto THEMONF na mesma linha */
+    .navbar-brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    
+    /* Logo pequeno e bem reduzido à esquerda */
+    .navbar-logo-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: transform 0.2s ease;
+    }
+    
+    .navbar-logo-img:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Marca THEMONF à esquerda, ao lado do logo */
+    .navbar-brand-text {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff !important;
+      letter-spacing: 0.5px;
+      margin: 0;
+      line-height: 1;
+    }
+    
+    .navbar-brand-text span {
       color: var(--gold-color);
     }
     
-    .navbar-nav .nav-link {
-      color: #E0E0FF !important;
-      font-weight: 500;
-      font-size: 0.85rem;
-      padding: 0.3rem 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.3s ease;
-      border-radius: 8px;
-    }
-    
-    .navbar-nav .nav-link:hover {
-      color: #FFFFFF !important;
-      background: rgba(255,255,255,0.1);
-    }
-    
-    .nav-item i {
-      font-size: 1rem;
-    }
-    
+    /* Botão toggler mobile */
     .navbar-toggler {
       border: none;
       background: none;
       color: white;
       padding: 0.25rem 0.5rem;
+      font-size: 1.5rem;
     }
     
     .navbar-toggler:focus {
       box-shadow: none;
     }
     
+    /* Menu de navegação */
+    .navbar-nav {
+      align-items: center;
+      gap: 0.2rem;
+    }
+    
+    .navbar-nav .nav-link {
+      color: #E0E0FF !important;
+      font-weight: 500;
+      font-size: 0.82rem;
+      padding: 0.4rem 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: #FFFFFF !important;
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-1px);
+    }
+    
     .divider {
       width: 1px;
-      height: 25px;
-      background-color: rgba(255,255,255,0.3);
-      margin: auto 0.5rem;
+      height: 22px;
+      background-color: rgba(255,255,255,0.25);
+      margin: 0 0.2rem;
+    }
+    
+    /* Botão de entrada destacado dentro da navbar (versão desktop) - MUITO MAIS EXPOSTO */
+    .nav-btn-entrar {
+      background: linear-gradient(135deg, var(--gold-color) 0%, #FFB700 100%);
+      color: #2c0b5e !important;
+      font-weight: 700 !important;
+      padding: 0.4rem 1.2rem !important;
+      border-radius: 40px !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      margin-left: 0.5rem;
+    }
+    
+    .nav-btn-entrar:hover {
+      transform: translateY(-2px) scale(1.02);
+      background: linear-gradient(135deg, #FFE600 0%, #FFC107 100%);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      color: #1e0066 !important;
+    }
+    
+    .nav-btn-entrar i {
+      color: #2c0b5e;
+    }
+    
+    /* Responsividade da navbar: garantir alinhamento e tudo em linha */
+    @media (max-width: 1199px) {
+      .navbar-nav .nav-link {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.5rem;
+      }
+      .navbar-brand-text {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 991px) {
+      .divider {
+        display: none;
+      }
+      
+      /* Menu mobile: organizar verticalmente, mas manter grupo esquerdo intacto */
+      .navbar-collapse {
+        margin-top: 0.8rem;
+        padding: 0.5rem 0;
+        background: rgba(0,0,0,0.1);
+        border-radius: 20px;
+      }
+      
+      .navbar-nav {
+        width: 100%;
+        gap: 0.3rem;
+      }
+      
+      .navbar-nav .nav-link {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+        white-space: normal;
+      }
+      
+      /* Botão entrar no mobile também fica enorme e visível */
+      .nav-btn-entrar {
+        margin: 0.5rem 0.8rem;
+        justify-content: center;
+        text-align: center;
+        background: var(--gold-color);
+        color: #2c0b5e !important;
+        font-weight: bold;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .navbar-brand-text {
+        font-size: 1rem;
+      }
+      .navbar-logo-img {
+        width: 32px;
+        height: 32px;
+      }
+      .navbar-brand-wrapper {
+        gap: 0.4rem;
+      }
     }
     
     /* ======== HEADER/HERO ======== */
@@ -113,16 +234,16 @@
       border-bottom-left-radius: 90px;
       border-bottom-right-radius: 90px;
       margin-bottom: 3rem;
-      margin-top: 60px;
+      margin-top: 70px;
     }
     
     .logo-container {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
     
     .logo {
-      max-width: 180px;
+      max-width: 160px;
       height: auto;
       margin-bottom: 1rem;
       border-radius: 50%;
@@ -130,23 +251,11 @@
       border: 4px solid rgba(255, 255, 255, 0.2);
     }
     
-    .brand-title {
-      color: white;
-      font-weight: 700;
-      letter-spacing: 3px;
-      margin-bottom: 1rem;
-      font-size: 2.5rem;
-    }
-    
-    .brand-title span {
-      color: var(--gold-color);
-    }
-    
     .hero-subtitle {
       font-size: 1.2rem;
       max-width: 700px;
       margin: 0 auto;
-      opacity: 0.9;
+      opacity: 0.95;
     }
     
     /* ======== SECTIONS ======== */
@@ -238,12 +347,12 @@
       opacity: 0.9;
     }
     
-    /* ======== BUTTONS ======== */
+    /* ======== BUTTONS (demais botões) ======== */
     .btn-themonf {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       color: white;
       border: none;
-      border-radius: 25px;
+      border-radius: 35px;
       padding: 0.9rem 1.8rem;
       font-weight: 600;
       transition: var(--transition);
@@ -257,7 +366,7 @@
     
     .btn-themonf:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(58, 12, 163, 0.4);
+      box-shadow: 0 8px 20px rgba(58, 12, 163, 0.4);
       color: white;
     }
     
@@ -267,7 +376,6 @@
     
     .btn-whatsapp:hover {
       background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
-      color: white;
     }
     
     .action-buttons {
@@ -275,6 +383,34 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.2rem;
       margin: 2.5rem 0;
+    }
+    
+    /* BOTÃO ENTRAR PRINCIPAL FLUTUANTE? De acordo com pedido: botão entrar que está lá em baixo passe a ser um botão completamente muito mais exposto em posições muito mais visível.
+       Vamos reforçar também na seção de ações e adicionalmente criar um botão fixo? Mas mantendo o destaque na navbar e na área de ação. 
+       Deixaremos o botão 'Entrar na Plataforma' com um destaque extra (mais brilho, tamanho maior). */
+    .btn-entrar-principal {
+      background: linear-gradient(135deg, #FFD60A, #FFB700);
+      color: #2a0b5e;
+      font-weight: 800;
+      font-size: 1.2rem;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      border: none;
+      letter-spacing: 1px;
+    }
+    
+    .btn-entrar-principal i {
+      font-size: 1.2rem;
+      color: #2a0b5e;
+    }
+    
+    .btn-entrar-principal:hover {
+      transform: translateY(-4px) scale(1.02);
+      background: linear-gradient(135deg, #FFE600, #FFC107);
+      box-shadow: 0 18px 28px rgba(0, 0, 0, 0.25);
+      color: #1a004d;
     }
     
     /* ======== FOOTER ======== */
@@ -285,19 +421,21 @@
       text-align: center;
       border-top-left-radius: 45px;
       border-top-right-radius: 45px;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
       margin-top: 4rem;
     }
     
     .social-links {
       margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
     }
     
     .footer-label {
       font-size: 0.9rem;
       font-weight: 500;
       color: #ffffffcc;
-      margin-right: 1rem;
     }
     
     .footer-link {
@@ -305,17 +443,17 @@
       font-size: 0.9rem;
       text-decoration: none;
       transition: all 0.3s ease;
-      margin: 0 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     
     .footer-link i {
-      margin-right: 6px;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
     
     .footer-link:hover {
       color: var(--gold-color);
-      text-decoration: none;
       transform: translateY(-2px);
     }
     
@@ -325,96 +463,37 @@
       margin-top: 1rem;
     }
     
-    /* ======== RESPONSIVE ======== */
-    @media (max-width: 991px) {
-      .divider {
-        display: none;
-      }
-      
-      .navbar-nav .nav-link {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
-      }
-      
-      /* Remove espaçamento vertical no menu mobile */
-      .navbar-collapse {
-        margin-top: 0;
-        padding-top: 0;
-      }
-      
-      .navbar-nav {
-        margin-top: 0.5rem;
-      }
-    }
-    
     @media (max-width: 768px) {
-      .brand-title {
-        font-size: 2rem;
-      }
-      
-      .app-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .action-buttons {
-        grid-template-columns: 1fr;
-      }
-      
       .hero-section {
-        padding: 3.5rem 0 1.5rem;
-        border-bottom-left-radius: 60px;
-        border-bottom-right-radius: 60px;
-        margin-top: 55px;
+        margin-top: 65px;
+        padding: 3rem 0 1.5rem;
       }
-      
-      .navbar-nav .nav-link {
-        font-size: 0.85rem;
-        padding: 0.3rem 0.6rem;
+      .section-title {
+        font-size: 1.6rem;
       }
-      
-      .social-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-      
-      .footer-label {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
-      }
-      
-      /* Ajustes específicos para mobile */
-      .navbar {
-        padding: 0.4rem 0;
-      }
-      
-      .container-main {
-        padding: 0 0.8rem;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .hero-section {
-        margin-top: 50px;
-        padding: 3rem 0 1rem;
-      }
-      
-      .brand-title {
-        font-size: 1.8rem;
-      }
-      
-      .hero-subtitle {
+      .btn-entrar-principal {
         font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+      }
+      .social-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Navbar -->
+  <!-- Navbar completamente reformulada: logo reduzida + THEMONF à esquerda, botões à direita e entrar super visível -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-main">
-      <a class="navbar-brand" href="#">T<span>HEMONF</span></a>
+      <!-- Grupo esquerdo: logo mini + texto THEMONF -->
+      <div class="navbar-brand-wrapper">
+        <img src="themonf.jpeg" alt="Logo" class="navbar-logo-img" id="navLogo" onerror="this.src='https://via.placeholder.com/38/FFFFFF/3A0CA3?text=M'">
+        <span class="navbar-brand-text">T<span>HEMONF</span></span>
+      </div>
+      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
@@ -462,7 +541,6 @@
               <i class="fas fa-users"></i> Socimonf
             </a>
           </li>
-          <!-- Aplicações adicionadas -->
           <li class="divider d-none d-lg-block"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
@@ -475,6 +553,12 @@
               <i class="fas fa-microphone-alt"></i> Rádio
             </a>
           </li>
+          <!-- Botão ENTRAR MUITO MAIS EXPOSO na própria barra de navegação -->
+          <li class="nav-item">
+            <a class="nav-link nav-btn-entrar" href="https://themonf.pythonanywhere.com">
+              <i class="fas fa-sign-in-alt"></i> ENTRAR
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -484,8 +568,7 @@
   <section class="hero-section" data-aos="fade-up">
     <div class="container-main">
       <div class="logo-container">
-        <img src="themonf.jpeg" alt="Logo THEMONF" class="logo" onerror="this.src='https://via.placeholder.com/180/3A0CA3/FFFFFF?text=THEMONF'" />
-        <!--<h1 class="brand-title">T<span>HEMONF</span></h1>-->
+        <img src="themonf.jpeg" alt="Logo THEMONF" class="logo" onerror="this.src='https://via.placeholder.com/160/3A0CA3/FFFFFF?text=THEMONF'" />
         <p class="hero-subtitle">
           Uma plataforma completa que une oportunidades de renda, desenvolvimento pessoal, 
           conexões humanas e bem-estar em um único ecossistema inovador.
@@ -527,74 +610,47 @@
       
       <div class="app-grid">
         <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-tasks"></i>
-          </div>
+          <div class="app-icon"><i class="fas fa-tasks"></i></div>
           <h3 class="app-name">Trademonf</h3>
           <p class="app-description">Realize tarefas e conquiste recompensas em Tcoins.</p>
         </div>
-        
         <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
+          <div class="app-icon"><i class="fas fa-shopping-cart"></i></div>
           <h3 class="app-name">Shopmonf</h3>
           <p class="app-description">Compre produtos e serviços com praticidade.</p>
         </div>
-        
         <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-heart"></i>
-          </div>
+          <div class="app-icon"><i class="fas fa-heart"></i></div>
           <h3 class="app-name">Lovemonf</h3>
           <p class="app-description">Conecte-se com pessoas e construa relacionamentos reais.</p>
         </div>
-        
         <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-comments"></i>
-          </div>
+          <div class="app-icon"><i class="fas fa-comments"></i></div>
           <h3 class="app-name">Telemonf</h3>
           <p class="app-description">Comunique-se via texto com liberdade e segurança.</p>
         </div>
-        
         <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
+          <div class="app-icon"><i class="fas fa-graduation-cap"></i></div>
           <h3 class="app-name">Gradumonf</h3>
           <p class="app-description">Aprenda, ensine e compartilhe conhecimento.</p>
         </div>
-        
         <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-briefcase"></i>
-          </div>
+          <div class="app-icon"><i class="fas fa-briefcase"></i></div>
           <h3 class="app-name">Promonf</h3>
           <p class="app-description">Divulgue seus serviços dentro da comunidade.</p>
         </div>
-        
         <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-users"></i>
-          </div>
+          <div class="app-icon"><i class="fas fa-users"></i></div>
           <h3 class="app-name">Socimonf</h3>
           <p class="app-description">Interaja e compartilhe conteúdo numa rede social sem algoritmos invasivos.</p>
         </div>
-        
-        <!-- Novos cards adicionados -->
         <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-book-open"></i>
-          </div>
+          <div class="app-icon"><i class="fas fa-book-open"></i></div>
           <h3 class="app-name">EADmonf</h3>
           <p class="app-description">Plataforma de cursos online para desenvolvimento contínuo e capacitação profissional.</p>
         </div>
-        
         <div class="app-card">
-          <div class="app-icon">
-            <i class="fas fa-podcast"></i>
-          </div>
+          <div class="app-icon"><i class="fas fa-podcast"></i></div>
           <h3 class="app-name">Rádio THEMONF</h3>
           <p class="app-description">Web rádio com mensagens de alto valor para sua evolução pessoal e profissional.</p>
         </div>
@@ -611,7 +667,7 @@
       </p>
     </section>
 
-    <!-- Seção Ações -->
+    <!-- Seção Ações com botão ENTRAR extremamente destacado e visível -->
     <section class="section" data-aos="fade-up">
       <h2 class="section-title">Comece Agora</h2>
       <div class="action-buttons">
@@ -624,9 +680,15 @@
         <a href="https://wa.me/5591985230716?text=Olá!%20Quero%20saber%20sobre%20o%20THEMONF" class="btn btn-themonf btn-whatsapp">
           <i class="fab fa-whatsapp"></i> Contatar
         </a>
-        <a href="https://themonf.pythonanywhere.com" class="btn btn-themonf">
-          <i class="fas fa-sign-in-alt"></i> Entrar na Plataforma
+        <!-- Botão ENTRAR PRINCIPAL - MUITO MAIS EXPOSTO e com cores chamativas -->
+        <a href="https://themonf.pythonanywhere.com" class="btn btn-entrar-principal">
+          <i class="fas fa-arrow-right-to-bracket"></i> ACESSAR PLATAFORMA → ENTRAR
         </a>
+      </div>
+      
+      <!-- Reforço visual extra: chamada destacada -->
+      <div class="text-center mt-4">
+        <p style="font-size: 0.95rem; opacity:0.8;">🔓 Clique no botão dourado acima e faça parte do futuro!</p>
       </div>
     </section>
   </div>
@@ -635,7 +697,7 @@
   <footer data-aos="fade-up">
     <div class="container-main">
       <div class="social-links">
-        <span class="footer-label">Suporte:</span>
+        <span class="footer-label"><i class="fas fa-headset"></i> Suporte:</span>
         <a href="https://wa.me/5591985230716" class="footer-link" target="_blank">
           <i class="fab fa-whatsapp"></i> WhatsApp
         </a>
@@ -654,31 +716,35 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Inicialização AOS
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',
       once: true
     });
     
-    // Corrigir a imagem do logo se não carregar
     document.addEventListener('DOMContentLoaded', function() {
-      const logo = document.querySelector('.logo');
-      logo.addEventListener('error', function() {
-        this.src = 'https://via.placeholder.com/180/3A0CA3/FFFFFF?text=THEMONF';
-        this.alt = 'Logo THEMONF - Placeholder';
-      });
+      // fallback para imagem do nav logo
+      const navLogo = document.getElementById('navLogo');
+      if (navLogo) {
+        navLogo.addEventListener('error', function() {
+          this.src = 'https://via.placeholder.com/38/FFFFFF/3A0CA3?text=M';
+        });
+      }
       
-      // Prevenir comportamento de scroll estranho
+      const mainLogo = document.querySelector('.logo');
+      if (mainLogo) {
+        mainLogo.addEventListener('error', function() {
+          this.src = 'https://via.placeholder.com/160/3A0CA3/FFFFFF?text=THEMONF';
+        });
+      }
+      
       window.scrollTo(0, 0);
     });
     
-    // Prevenir problemas de scroll ao carregar a página
     window.addEventListener('load', function() {
-      setTimeout(function() {
-        window.scrollTo(0, 0);
-      }, 100);
+      setTimeout(() => window.scrollTo(0, 0), 50);
     });
   </script>
 </body>
 </html>
+```

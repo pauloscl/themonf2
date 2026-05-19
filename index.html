@@ -1,4 +1,4 @@
-Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o botão "Entrar" mais visível:
+Você tem toda razão! Vou corrigir: remover o logo central duplicado e ajustar a navbar para ficar em uma única linha, reduzindo os botões e otimizando o espaço.
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -30,232 +30,263 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
       --transition: all 0.3s ease;
     }
     
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(180deg, var(--light-color) 0%, #eef1f7 100%);
       color: var(--text-color);
-      transition: var(--transition);
       line-height: 1.6;
-      margin: 0;
-      padding: 0;
       overflow-x: hidden;
     }
     
     .container-main {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 0 1rem;
     }
     
-    /* ======== NAVBAR REFORMULADA ======== */
-    /* Logo reduzido e à esquerda, THEMONF ao lado, depois menu à direita */
+    /* ======== NAVBAR - UMA ÚNICA LINHA ======== */
     .navbar {
       background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      padding: 0.5rem 0;
+      padding: 0.3rem 0;
+      min-height: 60px;
     }
     
-    /* Container flexível para alinhar tudo na mesma linha */
     .navbar .container-main {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      width: 100%;
     }
     
-    /* Grupo da esquerda: logo reduzido + texto THEMONF na mesma linha */
+    /* Grupo esquerdo: logo reduzido + texto THEMONF */
     .navbar-brand-wrapper {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
+      flex-shrink: 0;
     }
     
-    /* Logo pequeno e bem reduzido à esquerda */
     .navbar-logo-img {
-      width: 38px;
-      height: 38px;
+      width: 35px;
+      height: 35px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid rgba(255,255,255,0.3);
-      transition: transform 0.2s ease;
     }
     
-    .navbar-logo-img:hover {
-      transform: scale(1.05);
-    }
-    
-    /* Marca THEMONF à esquerda, ao lado do logo */
     .navbar-brand-text {
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #fff !important;
       letter-spacing: 0.5px;
       margin: 0;
       line-height: 1;
+      white-space: nowrap;
     }
     
     .navbar-brand-text span {
       color: var(--gold-color);
     }
     
-    /* Botão toggler mobile */
+    /* Botão toggler - escondido em desktop, visível apenas mobile */
     .navbar-toggler {
+      display: none;
       border: none;
       background: none;
       color: white;
-      padding: 0.25rem 0.5rem;
       font-size: 1.5rem;
+      padding: 0.25rem 0.5rem;
     }
     
-    .navbar-toggler:focus {
-      box-shadow: none;
+    /* Menu de navegação - em linha única */
+    .navbar-collapse {
+      display: flex !important;
+      flex-grow: 1;
+      justify-content: flex-end;
     }
     
-    /* Menu de navegação */
     .navbar-nav {
+      display: flex;
+      flex-direction: row;
       align-items: center;
-      gap: 0.2rem;
+      gap: 0.15rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    .nav-item {
+      display: inline-flex;
+      align-items: center;
     }
     
     .navbar-nav .nav-link {
       color: #E0E0FF !important;
       font-weight: 500;
-      font-size: 0.82rem;
-      padding: 0.4rem 0.7rem;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.45rem;
       display: flex;
       align-items: center;
-      gap: 5px;
-      transition: all 0.3s ease;
-      border-radius: 8px;
+      gap: 3px;
+      transition: all 0.2s ease;
+      border-radius: 6px;
       white-space: nowrap;
+    }
+    
+    .navbar-nav .nav-link i {
+      font-size: 0.7rem;
     }
     
     .navbar-nav .nav-link:hover {
       color: #FFFFFF !important;
       background: rgba(255,255,255,0.15);
-      transform: translateY(-1px);
     }
     
     .divider {
       width: 1px;
-      height: 22px;
+      height: 20px;
       background-color: rgba(255,255,255,0.25);
-      margin: 0 0.2rem;
+      margin: 0 0.1rem;
+      flex-shrink: 0;
     }
     
-    /* Botão de entrada destacado dentro da navbar (versão desktop) - MUITO MAIS EXPOSTO */
+    /* Botão ENTRAR na navbar - super destacado */
     .nav-btn-entrar {
       background: linear-gradient(135deg, var(--gold-color) 0%, #FFB700 100%);
       color: #2c0b5e !important;
-      font-weight: 700 !important;
-      padding: 0.4rem 1.2rem !important;
-      border-radius: 40px !important;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: all 0.3s;
-      margin-left: 0.5rem;
+      font-weight: 800 !important;
+      padding: 0.3rem 1rem !important;
+      border-radius: 30px !important;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      margin-left: 0.3rem;
+      font-size: 0.75rem !important;
     }
     
     .nav-btn-entrar:hover {
-      transform: translateY(-2px) scale(1.02);
+      transform: translateY(-1px);
       background: linear-gradient(135deg, #FFE600 0%, #FFC107 100%);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-      color: #1e0066 !important;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.25);
     }
     
     .nav-btn-entrar i {
-      color: #2c0b5e;
+      font-size: 0.75rem;
     }
     
-    /* Responsividade da navbar: garantir alinhamento e tudo em linha */
-    @media (max-width: 1199px) {
+    /* Responsivo: quando não couber em uma linha, usar scroll horizontal ou reduzir mais */
+    @media (max-width: 1300px) {
       .navbar-nav .nav-link {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.5rem;
+        font-size: 0.65rem;
+        padding: 0.2rem 0.4rem;
       }
       .navbar-brand-text {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+      }
+      .nav-btn-entrar {
+        padding: 0.25rem 0.8rem !important;
+        font-size: 0.7rem !important;
       }
     }
     
-    @media (max-width: 991px) {
+    @media (max-width: 1150px) {
+      .navbar-nav .nav-link {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.35rem;
+      }
       .divider {
-        display: none;
+        margin: 0 0.05rem;
+      }
+      .navbar-brand-text {
+        font-size: 1rem;
+      }
+      .navbar-logo-img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    
+    /* Mobile: transforma em menu hambúrguer */
+    @media (max-width: 991px) {
+      .navbar-toggler {
+        display: block;
       }
       
-      /* Menu mobile: organizar verticalmente, mas manter grupo esquerdo intacto */
       .navbar-collapse {
-        margin-top: 0.8rem;
-        padding: 0.5rem 0;
-        background: rgba(0,0,0,0.1);
-        border-radius: 20px;
+        display: none !important;
+      }
+      
+      .navbar-collapse.show {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        padding: 1rem;
+        border-radius: 0 0 20px 20px;
+        z-index: 1000;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       }
       
       .navbar-nav {
+        flex-direction: column;
         width: 100%;
         gap: 0.3rem;
       }
       
       .navbar-nav .nav-link {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         padding: 0.5rem 0.8rem;
-        white-space: normal;
+        width: 100%;
+        justify-content: flex-start;
       }
       
-      /* Botão entrar no mobile também fica enorme e visível */
+      .divider {
+        display: none;
+      }
+      
       .nav-btn-entrar {
-        margin: 0.5rem 0.8rem;
+        margin: 0.5rem 0 0 0;
         justify-content: center;
         text-align: center;
-        background: var(--gold-color);
-        color: #2c0b5e !important;
-        font-weight: bold;
+        width: 100%;
+      }
+      
+      .container-main {
+        padding: 0 0.8rem;
       }
     }
     
-    @media (max-width: 576px) {
-      .navbar-brand-text {
-        font-size: 1rem;
-      }
-      .navbar-logo-img {
-        width: 32px;
-        height: 32px;
-      }
-      .navbar-brand-wrapper {
-        gap: 0.4rem;
-      }
-    }
-    
-    /* ======== HEADER/HERO ======== */
+    /* ======== HERO SEM LOGO CENTRAL ======== */
     .hero-section {
       background: linear-gradient(135deg, var(--secondary-color) 0%, #560BAD 100%);
       color: white;
-      padding: 4rem 0 2rem;
+      padding: 3.5rem 0 2.5rem;
       text-align: center;
       border-bottom-left-radius: 90px;
       border-bottom-right-radius: 90px;
       margin-bottom: 3rem;
-      margin-top: 70px;
+      margin-top: 60px;
     }
     
-    .logo-container {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-    
-    .logo {
-      max-width: 160px;
-      height: auto;
-      margin-bottom: 1rem;
-      border-radius: 50%;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      border: 4px solid rgba(255, 255, 255, 0.2);
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
     }
     
     .hero-subtitle {
       font-size: 1.2rem;
-      max-width: 700px;
       margin: 0 auto;
       opacity: 0.95;
+      font-weight: 500;
     }
     
     /* ======== SECTIONS ======== */
@@ -347,7 +378,7 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
       opacity: 0.9;
     }
     
-    /* ======== BUTTONS (demais botões) ======== */
+    /* ======== BUTTONS ======== */
     .btn-themonf {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       color: white;
@@ -385,9 +416,7 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
       margin: 2.5rem 0;
     }
     
-    /* BOTÃO ENTRAR PRINCIPAL FLUTUANTE? De acordo com pedido: botão entrar que está lá em baixo passe a ser um botão completamente muito mais exposto em posições muito mais visível.
-       Vamos reforçar também na seção de ações e adicionalmente criar um botão fixo? Mas mantendo o destaque na navbar e na área de ação. 
-       Deixaremos o botão 'Entrar na Plataforma' com um destaque extra (mais brilho, tamanho maior). */
+    /* Botão ENTRAR principal - MUITO MAIS EXPOSTO */
     .btn-entrar-principal {
       background: linear-gradient(135deg, #FFD60A, #FFB700);
       color: #2a0b5e;
@@ -399,6 +428,11 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
       transition: all 0.3s ease;
       border: none;
       letter-spacing: 1px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
     }
     
     .btn-entrar-principal i {
@@ -448,10 +482,6 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
       gap: 6px;
     }
     
-    .footer-link i {
-      font-size: 1rem;
-    }
-    
     .footer-link:hover {
       color: var(--gold-color);
       transform: translateY(-2px);
@@ -465,8 +495,14 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
     
     @media (max-width: 768px) {
       .hero-section {
-        margin-top: 65px;
-        padding: 3rem 0 1.5rem;
+        margin-top: 55px;
+        padding: 2.5rem 0 2rem;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
       }
       .section-title {
         font-size: 1.6rem;
@@ -475,22 +511,17 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
         font-size: 1rem;
         padding: 0.8rem 1.5rem;
       }
-      .social-links {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Navbar completamente reformulada: logo reduzida + THEMONF à esquerda, botões à direita e entrar super visível -->
+  <!-- Navbar - UMA ÚNICA LINHA com logo reduzida + THEMONF à esquerda e botões à direita -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-main">
-      <!-- Grupo esquerdo: logo mini + texto THEMONF -->
+      <!-- Grupo esquerdo: logo miniatura + THEMONF -->
       <div class="navbar-brand-wrapper">
-        <img src="themonf.jpeg" alt="Logo" class="navbar-logo-img" id="navLogo" onerror="this.src='https://via.placeholder.com/38/FFFFFF/3A0CA3?text=M'">
+        <img src="themonf.jpeg" alt="Logo" class="navbar-logo-img" id="navLogo" onerror="this.src='https://via.placeholder.com/35/FFFFFF/3A0CA3?text=M'">
         <span class="navbar-brand-text">T<span>HEMONF</span></span>
       </div>
       
@@ -499,61 +530,61 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
+        <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="#trademonf">
               <i class="fas fa-handshake"></i> Trademonf
             </a>
           </li>
-          <li class="divider d-none d-lg-block"></li>
+          <li class="divider"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-shopping-bag"></i> Shopmonf
             </a>
           </li>
-          <li class="divider d-none d-lg-block"></li>
+          <li class="divider"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-heart"></i> Lovemonf
             </a>
           </li>
-          <li class="divider d-none d-lg-block"></li>
+          <li class="divider"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-comments"></i> Telemonf
             </a>
           </li>
-          <li class="divider d-none d-lg-block"></li>
+          <li class="divider"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-chart-line"></i> Gradumonf
             </a>
           </li>
-          <li class="divider d-none d-lg-block"></li>
+          <li class="divider"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-calendar-check"></i> Promonf
             </a>
           </li>
-          <li class="divider d-none d-lg-block"></li>
+          <li class="divider"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-users"></i> Socimonf
             </a>
           </li>
-          <li class="divider d-none d-lg-block"></li>
+          <li class="divider"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-graduation-cap"></i> EADmonf
             </a>
           </li>
-          <li class="divider d-none d-lg-block"></li>
+          <li class="divider"></li>
           <li class="nav-item">
             <a class="nav-link" href="#ecossistema">
               <i class="fas fa-microphone-alt"></i> Rádio
             </a>
           </li>
-          <!-- Botão ENTRAR MUITO MAIS EXPOSO na própria barra de navegação -->
+          <!-- Botão ENTRAR SUPER DESTACADO na mesma linha -->
           <li class="nav-item">
             <a class="nav-link nav-btn-entrar" href="https://themonf.pythonanywhere.com">
               <i class="fas fa-sign-in-alt"></i> ENTRAR
@@ -564,11 +595,11 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section - SEM LOGO CENTRAL, apenas título e subtítulo -->
   <section class="hero-section" data-aos="fade-up">
     <div class="container-main">
-      <div class="logo-container">
-        <img src="themonf.jpeg" alt="Logo THEMONF" class="logo" onerror="this.src='https://via.placeholder.com/160/3A0CA3/FFFFFF?text=THEMONF'" />
+      <div class="hero-content">
+        <h1 class="display-5 fw-bold mb-3">T<span style="color: #FFD60A;">HEMONF</span></h1>
         <p class="hero-subtitle">
           Uma plataforma completa que une oportunidades de renda, desenvolvimento pessoal, 
           conexões humanas e bem-estar em um único ecossistema inovador.
@@ -667,7 +698,7 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
       </p>
     </section>
 
-    <!-- Seção Ações com botão ENTRAR extremamente destacado e visível -->
+    <!-- Seção Ações com botão ENTRAR extremamente destacado -->
     <section class="section" data-aos="fade-up">
       <h2 class="section-title">Comece Agora</h2>
       <div class="action-buttons">
@@ -680,15 +711,15 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
         <a href="https://wa.me/5591985230716?text=Olá!%20Quero%20saber%20sobre%20o%20THEMONF" class="btn btn-themonf btn-whatsapp">
           <i class="fab fa-whatsapp"></i> Contatar
         </a>
-        <!-- Botão ENTRAR PRINCIPAL - MUITO MAIS EXPOSTO e com cores chamativas -->
-        <a href="https://themonf.pythonanywhere.com" class="btn btn-entrar-principal">
+        <!-- Botão ENTRAR principal com destaque máximo -->
+        <a href="https://themonf.pythonanywhere.com" class="btn-entrar-principal">
           <i class="fas fa-arrow-right-to-bracket"></i> ACESSAR PLATAFORMA → ENTRAR
         </a>
       </div>
       
-      <!-- Reforço visual extra: chamada destacada -->
+      <!-- Chamada visual adicional -->
       <div class="text-center mt-4">
-        <p style="font-size: 0.95rem; opacity:0.8;">🔓 Clique no botão dourado acima e faça parte do futuro!</p>
+        <p style="font-size: 0.95rem; opacity:0.8;">✨ <strong>Clique no botão dourado</strong> e faça parte do futuro! ✨</p>
       </div>
     </section>
   </div>
@@ -723,26 +754,34 @@ Aqui está o HTML atualizado com as mudanças solicitadas para a navegação e o
     });
     
     document.addEventListener('DOMContentLoaded', function() {
-      // fallback para imagem do nav logo
+      // Fallback para imagem do nav logo
       const navLogo = document.getElementById('navLogo');
       if (navLogo) {
         navLogo.addEventListener('error', function() {
-          this.src = 'https://via.placeholder.com/38/FFFFFF/3A0CA3?text=M';
+          this.src = 'https://via.placeholder.com/35/FFFFFF/3A0CA3?text=M';
         });
       }
       
-      const mainLogo = document.querySelector('.logo');
-      if (mainLogo) {
-        mainLogo.addEventListener('error', function() {
-          this.src = 'https://via.placeholder.com/160/3A0CA3/FFFFFF?text=THEMONF';
+      // Scroll suave para links internos
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href !== '#' && href !== '#ecossistema' && href !== '#trademonf') return;
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Fechar menu mobile se estiver aberto
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (navbarCollapse.classList.contains('show')) {
+              const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+              if (bsCollapse) bsCollapse.hide();
+            }
+          }
         });
-      }
+      });
       
       window.scrollTo(0, 0);
-    });
-    
-    window.addEventListener('load', function() {
-      setTimeout(() => window.scrollTo(0, 0), 50);
     });
   </script>
 </body>

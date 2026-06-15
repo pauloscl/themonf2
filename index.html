@@ -1,786 +1,504 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THEMONF - Plataforma de renda e desenvolvimento pessoal</title>
-
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <!-- AOS CSS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  
-  <style>
-    :root {
-      --primary-color: #3A0CA3;
-      --secondary-color: #7209B7;
-      --accent-color: #4361EE;
-      --gold-color: #FFD60A;
-      --light-color: #f7f8fc;
-      --dark-color: #333;
-      --text-color: #333;
-      --border-radius: 16px;
-      --box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      --transition: all 0.3s ease;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, var(--light-color) 0%, #eef1f7 100%);
-      color: var(--text-color);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    .container-main {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-    
-    /* ======== NAVBAR - UMA ÚNICA LINHA ======== */
-    .navbar {
-      background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      padding: 0.3rem 0;
-      min-height: 60px;
-    }
-    
-    .navbar .container-main {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: nowrap;
-      width: 100%;
-    }
-    
-    /* Grupo esquerdo: logo reduzido + texto THEMONF */
-    .navbar-brand-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-shrink: 0;
-    }
-    
-    .navbar-logo-img {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(255,255,255,0.3);
-    }
-    
-    .navbar-brand-text {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff !important;
-      letter-spacing: 0.5px;
-      margin: 0;
-      line-height: 1;
-      white-space: nowrap;
-    }
-    
-    .navbar-brand-text span {
-      color: var(--gold-color);
-    }
-    
-    /* Botão toggler - escondido em desktop, visível apenas mobile */
-    .navbar-toggler {
-      display: none;
-      border: none;
-      background: none;
-      color: white;
-      font-size: 1.5rem;
-      padding: 0.25rem 0.5rem;
-    }
-    
-    /* Menu de navegação - em linha única */
-    .navbar-collapse {
-      display: flex !important;
-      flex-grow: 1;
-      justify-content: flex-end;
-    }
-    
-    .navbar-nav {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 0.15rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    
-    .nav-item {
-      display: inline-flex;
-      align-items: center;
-    }
-    
-    .navbar-nav .nav-link {
-      color: #E0E0FF !important;
-      font-weight: 500;
-      font-size: 0.7rem;
-      padding: 0.25rem 0.45rem;
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      transition: all 0.2s ease;
-      border-radius: 6px;
-      white-space: nowrap;
-    }
-    
-    .navbar-nav .nav-link i {
-      font-size: 0.7rem;
-    }
-    
-    .navbar-nav .nav-link:hover {
-      color: #FFFFFF !important;
-      background: rgba(255,255,255,0.15);
-    }
-    
-    .divider {
-      width: 1px;
-      height: 20px;
-      background-color: rgba(255,255,255,0.25);
-      margin: 0 0.1rem;
-      flex-shrink: 0;
-    }
-    
-    /* Botão ENTRAR na navbar - super destacado */
-    .nav-btn-entrar {
-      background: linear-gradient(135deg, var(--gold-color) 0%, #FFB700 100%);
-      color: #2c0b5e !important;
-      font-weight: 800 !important;
-      padding: 0.3rem 1rem !important;
-      border-radius: 30px !important;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      margin-left: 0.3rem;
-      font-size: 0.75rem !important;
-    }
-    
-    .nav-btn-entrar:hover {
-      transform: translateY(-1px);
-      background: linear-gradient(135deg, #FFE600 0%, #FFC107 100%);
-      box-shadow: 0 5px 12px rgba(0,0,0,0.25);
-    }
-    
-    .nav-btn-entrar i {
-      font-size: 0.75rem;
-    }
-    
-    /* Responsivo: quando não couber em uma linha, usar scroll horizontal ou reduzir mais */
-    @media (max-width: 1300px) {
-      .navbar-nav .nav-link {
-        font-size: 0.65rem;
-        padding: 0.2rem 0.4rem;
-      }
-      .navbar-brand-text {
-        font-size: 1.1rem;
-      }
-      .nav-btn-entrar {
-        padding: 0.25rem 0.8rem !important;
-        font-size: 0.7rem !important;
-      }
-    }
-    
-    @media (max-width: 1150px) {
-      .navbar-nav .nav-link {
-        font-size: 0.6rem;
-        padding: 0.2rem 0.35rem;
-      }
-      .divider {
-        margin: 0 0.05rem;
-      }
-      .navbar-brand-text {
-        font-size: 1rem;
-      }
-      .navbar-logo-img {
-        width: 30px;
-        height: 30px;
-      }
-    }
-    
-    /* Mobile: transforma em menu hambúrguer */
-    @media (max-width: 991px) {
-      .navbar-toggler {
-        display: block;
-      }
-      
-      .navbar-collapse {
-        display: none !important;
-      }
-      
-      .navbar-collapse.show {
-        display: flex !important;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        padding: 1rem;
-        border-radius: 0 0 20px 20px;
-        z-index: 1000;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-      }
-      
-      .navbar-nav {
-        flex-direction: column;
-        width: 100%;
-        gap: 0.3rem;
-      }
-      
-      .navbar-nav .nav-link {
-        font-size: 0.85rem;
-        padding: 0.5rem 0.8rem;
-        width: 100%;
-        justify-content: flex-start;
-      }
-      
-      .divider {
-        display: none;
-      }
-      
-      .nav-btn-entrar {
-        margin: 0.5rem 0 0 0;
-        justify-content: center;
-        text-align: center;
-        width: 100%;
-      }
-      
-      .container-main {
-        padding: 0 0.8rem;
-      }
-    }
-    
-    /* ======== HERO SEM LOGO CENTRAL ======== */
-    .hero-section {
-      background: linear-gradient(135deg, var(--secondary-color) 0%, #560BAD 100%);
-      color: white;
-      padding: 3.5rem 0 2.5rem;
-      text-align: center;
-      border-bottom-left-radius: 90px;
-      border-bottom-right-radius: 90px;
-      margin-bottom: 3rem;
-      margin-top: 60px;
-    }
-    
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .hero-subtitle {
-      font-size: 1.2rem;
-      margin: 0 auto;
-      opacity: 0.95;
-      font-weight: 500;
-    }
-    
-    /* ======== SECTIONS ======== */
-    .section {
-      margin-bottom: 4rem;
-      padding: 2rem 0;
-    }
-    
-    .section-title {
-      color: var(--primary-color);
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      position: relative;
-    }
-    
-    .section-title:after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: var(--accent-color);
-      margin: 0.5rem auto;
-      border-radius: 2px;
-    }
-    
-    .texto-plataforma {
-      max-width: 800px;
-      margin: 0 auto 1.5rem;
-      font-size: 1.1rem;
-      text-align: center;
-    }
-    
-    .highlight-box {
-      background: linear-gradient(135deg, rgba(58, 12, 163, 0.1) 0%, rgba(114, 9, 183, 0.1) 100%);
-      border-radius: var(--border-radius);
-      padding: 2.5rem;
-      margin: 2rem 0;
-      box-shadow: var(--box-shadow);
-      border: 1px solid rgba(58, 12, 163, 0.1);
-    }
-    
-    /* ======== APP GRID ======== */
-    .app-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .app-card {
-      background: white;
-      border-radius: var(--border-radius);
-      padding: 1.8rem;
-      box-shadow: var(--box-shadow);
-      transition: var(--transition);
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    
-    .app-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-    }
-    
-    .app-icon {
-      font-size: 2.8rem;
-      color: var(--primary-color);
-      margin-bottom: 1.2rem;
-      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .app-name {
-      font-weight: 700;
-      color: var(--primary-color);
-      margin-bottom: 0.8rem;
-      font-size: 1.3rem;
-    }
-    
-    .app-description {
-      font-size: 0.95rem;
-      color: var(--text-color);
-      flex-grow: 1;
-      opacity: 0.9;
-    }
-    
-    /* ======== BUTTONS ======== */
-    .btn-themonf {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: white;
-      border: none;
-      border-radius: 35px;
-      padding: 0.9rem 1.8rem;
-      font-weight: 600;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(58, 12, 163, 0.3);
-    }
-    
-    .btn-themonf:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(58, 12, 163, 0.4);
-      color: white;
-    }
-    
-    .btn-whatsapp {
-      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    }
-    
-    .btn-whatsapp:hover {
-      background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
-    }
-    
-    .action-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.2rem;
-      margin: 2.5rem 0;
-    }
-    
-    /* Botão ENTRAR principal - MUITO MAIS EXPOSTO */
-    .btn-entrar-principal {
-      background: linear-gradient(135deg, #FFD60A, #FFB700);
-      color: #2a0b5e;
-      font-weight: 800;
-      font-size: 1.2rem;
-      padding: 1rem 2rem;
-      border-radius: 60px;
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-      border: none;
-      letter-spacing: 1px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-    }
-    
-    .btn-entrar-principal i {
-      font-size: 1.2rem;
-      color: #2a0b5e;
-    }
-    
-    .btn-entrar-principal:hover {
-      transform: translateY(-4px) scale(1.02);
-      background: linear-gradient(135deg, #FFE600, #FFC107);
-      box-shadow: 0 18px 28px rgba(0, 0, 0, 0.25);
-      color: #1a004d;
-    }
-    
-    /* ======== FOOTER ======== */
-    footer {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-      color: #e8e8e8;
-      padding: 2.5rem 0 1.5rem;
-      text-align: center;
-      border-top-left-radius: 45px;
-      border-top-right-radius: 45px;
-      margin-top: 4rem;
-    }
-    
-    .social-links {
-      margin-bottom: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.2rem;
-    }
-    
-    .footer-label {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #ffffffcc;
-    }
-    
-    .footer-link {
-      color: #e0e0e0;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    
-    .footer-link:hover {
-      color: var(--gold-color);
-      transform: translateY(-2px);
-    }
-    
-    .footer-copy {
-      font-size: 0.85rem;
-      color: #dcdcdc;
-      margin-top: 1rem;
-    }
-    
-    @media (max-width: 768px) {
-      .hero-section {
-        margin-top: 55px;
-        padding: 2.5rem 0 2rem;
-        border-bottom-left-radius: 50px;
-        border-bottom-right-radius: 50px;
-      }
-      .hero-subtitle {
-        font-size: 1rem;
-        padding: 0 1rem;
-      }
-      .section-title {
-        font-size: 1.6rem;
-      }
-      .btn-entrar-principal {
-        font-size: 1rem;
-        padding: 0.8rem 1.5rem;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Navbar - UMA ÚNICA LINHA com logo reduzida + THEMONF à esquerda e botões à direita -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container-main">
-      <!-- Grupo esquerdo: logo miniatura + THEMONF -->
-      <div class="navbar-brand-wrapper">
-        <img src="themonf.jpeg" alt="Logo" class="navbar-logo-img" id="navLogo" onerror="this.src='https://via.placeholder.com/35/FFFFFF/3A0CA3?text=M'">
-        <span class="navbar-brand-text">T<span>HEMONF</span></span>
-      </div>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#trademonf">
-              <i class="fas fa-handshake"></i> Trademonf
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ecossistema">
-              <i class="fas fa-shopping-bag"></i> Shopmonf
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ecossistema">
-              <i class="fas fa-heart"></i> Lovemonf
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ecossistema">
-              <i class="fas fa-comments"></i> Telemonf
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ecossistema">
-              <i class="fas fa-chart-line"></i> Gradumonf
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ecossistema">
-              <i class="fas fa-calendar-check"></i> Promonf
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ecossistema">
-              <i class="fas fa-users"></i> Socimonf
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ecossistema">
-              <i class="fas fa-graduation-cap"></i> EADmonf
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ecossistema">
-              <i class="fas fa-microphone-alt"></i> Rádio
-            </a>
-          </li>
-          <!-- Botão ENTRAR SUPER DESTACADO na mesma linha -->
-          <li class="nav-item">
-            <a class="nav-link nav-btn-entrar" href="https://themonf.pythonanywhere.com">
-              <i class="fas fa-sign-in-alt"></i> ENTRAR
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section - SEM LOGO CENTRAL, apenas título e subtítulo -->
-  <section class="hero-section" data-aos="fade-up">
-    <div class="container-main">
-      <div class="hero-content">
-        <!--<h1 class="display-5 fw-bold mb-3">T<span style="color: #FFD60A;">HEMONF</span></h1>-->
-        <p class="hero-subtitle">
-          Uma plataforma completa que une oportunidades de renda, desenvolvimento pessoal, 
-          conexões humanas e bem-estar em um único ecossistema inovador.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <div class="container-main">
-    <!-- Seção de Introdução -->
-    <section class="section" data-aos="fade-up">
-      <h2 class="section-title">Uma Plataforma Completa para Seu Desenvolvimento</h2>
-      <p class="texto-plataforma">
-        A <strong>THEMONF</strong> é uma plataforma digital inovadora que conecta pessoas a 
-        <strong>oportunidades de crescimento financeiro, pessoal, social e de bem-estar</strong>.  
-        Mais do que uma rede, é um <strong>ecossistema integrado</strong> que une trabalho, conhecimento, relacionamento e comunicação em um só lugar.
-      </p>
-    </section>
-
-    <!-- Seção Trademonf -->
-    <section class="section" id="trademonf" data-aos="fade-up">
-      <div class="highlight-box">
-        <h2 class="section-title">Trademonf - O Coração da Plataforma</h2>
-        <p class="texto-plataforma">
-          No centro do ecossistema está o <strong>Trademonf</strong> — o núcleo inteligente da plataforma — 
-          onde você realiza tarefas, participa de desafios e movimenta a <strong>Tcoin</strong>, 
-          nossa moeda digital exclusiva.  
-          O Trademonf é o coração da economia THEMONF, impulsionando o progresso individual e coletivo.
-        </p>
-      </div>
-    </section>
-
-    <!-- Seção Aplicativos -->
-    <section class="section" id="ecossistema" data-aos="fade-up">
-      <h2 class="section-title">Ecossistema Completo de Aplicações</h2>
-      <p class="texto-plataforma">
-        Ao redor do núcleo, você encontra aplicações que ampliam a experiência e promovem qualidade de vida em diversas dimensões:
-      </p>
-      
-      <div class="app-grid">
-        <div class="app-card">
-          <div class="app-icon"><i class="fas fa-tasks"></i></div>
-          <h3 class="app-name">Trademonf</h3>
-          <p class="app-description">Realize tarefas e conquiste recompensas em Tcoins.</p>
-        </div>
-        <div class="app-card">
-          <div class="app-icon"><i class="fas fa-shopping-cart"></i></div>
-          <h3 class="app-name">Shopmonf</h3>
-          <p class="app-description">Compre produtos e serviços com praticidade.</p>
-        </div>
-        <div class="app-card">
-          <div class="app-icon"><i class="fas fa-heart"></i></div>
-          <h3 class="app-name">Lovemonf</h3>
-          <p class="app-description">Conecte-se com pessoas e construa relacionamentos reais.</p>
-        </div>
-        <div class="app-card">
-          <div class="app-icon"><i class="fas fa-comments"></i></div>
-          <h3 class="app-name">Telemonf</h3>
-          <p class="app-description">Comunique-se via texto com liberdade e segurança.</p>
-        </div>
-        <div class="app-card">
-          <div class="app-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3 class="app-name">Gradumonf</h3>
-          <p class="app-description">Aprenda, ensine e compartilhe conhecimento.</p>
-        </div>
-        <div class="app-card">
-          <div class="app-icon"><i class="fas fa-briefcase"></i></div>
-          <h3 class="app-name">Promonf</h3>
-          <p class="app-description">Divulgue seus serviços dentro da comunidade.</p>
-        </div>
-        <div class="app-card">
-          <div class="app-icon"><i class="fas fa-users"></i></div>
-          <h3 class="app-name">Socimonf</h3>
-          <p class="app-description">Interaja e compartilhe conteúdo numa rede social sem algoritmos invasivos.</p>
-        </div>
-        <div class="app-card">
-          <div class="app-icon"><i class="fas fa-book-open"></i></div>
-          <h3 class="app-name">EADmonf</h3>
-          <p class="app-description">Plataforma de cursos online para desenvolvimento contínuo e capacitação profissional.</p>
-        </div>
-        <div class="app-card">
-          <div class="app-icon"><i class="fas fa-podcast"></i></div>
-          <h3 class="app-name">Rádio THEMONF</h3>
-          <p class="app-description">Web rádio com mensagens de alto valor para sua evolução pessoal e profissional.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Seção Missão -->
-    <section class="section" data-aos="fade-up">
-      <h2 class="section-title">Nossa Missão</h2>
-      <p class="texto-plataforma">
-        A missão da THEMONF é <strong>melhorar a vida das pessoas</strong>, promovendo renda, aprendizado, 
-        conexão humana e equilíbrio emocional — tudo em um ambiente digital 
-        <strong>inclusivo, sustentável e próspero</strong>.
-      </p>
-    </section>
-
-    <!-- Seção Ações com botão ENTRAR extremamente destacado -->
-    <section class="section" data-aos="fade-up">
-      <h2 class="section-title">Comece Agora</h2>
-      <div class="action-buttons">
-        <a href="https://themonf.pythonanywhere.com/user-plan" class="btn btn-themonf">
-          <i class="fas fa-chart-line"></i> Plano de Negócios
-        </a>
-        <a href="https://themonf.pythonanywhere.com/projetoevoluir" class="btn btn-themonf">
-          <i class="fas fa-seedling"></i> Projeto Evoluir
-        </a>
-        <a href="https://wa.me/5591985230716?text=Olá!%20Quero%20saber%20sobre%20o%20THEMONF" class="btn btn-themonf btn-whatsapp">
-          <i class="fab fa-whatsapp"></i> Contatar
-        </a>
-        <!-- Botão ENTRAR principal com destaque máximo -->
-        <a href="https://themonf.pythonanywhere.com" class="btn-entrar-principal">
-          <i class="fas fa-arrow-right-to-bracket"></i> ACESSAR PLATAFORMA → ENTRAR
-        </a>
-      </div>
-      
-      <!-- Chamada visual adicional -->
-      <div class="text-center mt-4">
-        <p style="font-size: 0.95rem; opacity:0.8;">✨ <strong>Clique no botão dourado</strong> e faça parte do futuro! ✨</p>
-      </div>
-    </section>
-  </div>
-
-  <!-- Rodapé -->
-  <footer data-aos="fade-up">
-    <div class="container-main">
-      <div class="social-links">
-        <span class="footer-label"><i class="fas fa-headset"></i> Suporte:</span>
-        <a href="https://wa.me/5591985230716" class="footer-link" target="_blank">
-          <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-        <a href="https://www.facebook.com/sergio.themonf/" class="footer-link" target="_blank">
-          <i class="fab fa-facebook"></i> Facebook
-        </a>
-        <a href="#" class="footer-link">
-          <i class="fas fa-comments"></i> Telemonf
-        </a>
-      </div>
-      <p class="footer-copy">&copy; 2025 - Desenvolvido por <strong>Paulo THEMONF</strong></p>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true
-    });
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      // Fallback para imagem do nav logo
-      const navLogo = document.getElementById('navLogo');
-      if (navLogo) {
-        navLogo.addEventListener('error', function() {
-          this.src = 'https://via.placeholder.com/35/FFFFFF/3A0CA3?text=M';
-        });
-      }
-      
-      // Scroll suave para links internos
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          if (href !== '#' && href !== '#ecossistema' && href !== '#trademonf') return;
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // Fechar menu mobile se estiver aberto
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse.classList.contains('show')) {
-              const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-              if (bsCollapse) bsCollapse.hide();
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>THEMONF · Saúde · Dinheiro · Liberdade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Paleta renovada - contraste melhorado
+                        saude: '#0f7b3a',     // verde mais sólido e acessível
+                        dinheiro: '#e67e22',  // laranja equilibrado
+                        liberdade: '#2c7da0', // azul suave mas legível
+                        primario: '#1a73e8',  // azul Google
+                        secundario: '#5f6368',
+                        // Tons neutros com melhor contraste
+                        fundo: '#ffffff',
+                        card: '#ffffff',
+                        texto: '#202124',      // quase preto (Google)
+                        texto_claro: '#5f6368', // cinza Google
+                        borda: '#dadce0',      // cinza suave
+                        hover: '#f1f3f4',
+                    },
+                    fontFamily: {
+                        sans: ['Google Sans', 'Roboto', 'system-ui', 'Segoe UI', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'google': '0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)',
+                        'google-hover': '0 1px 3px 0 rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)',
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                    }
+                }
             }
-          }
-        });
-      });
-      
-      window.scrollTo(0, 0);
+        }
+    </script>
+    <style>
+        /* Transições suaves e reset minimalista */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hover-scale {
+            transition: transform 0.2s cubic-bezier(0.2, 0, 1), box-shadow 0.2s ease;
+        }
+
+        .hover-scale:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-transition {
+            transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        /* Animações suaves para dropdowns */
+        .dropdown-enter {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+
+        .dropdown-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.15s, transform 0.15s;
+        }
+
+        /* ✅ ESTILOS DO CHAT GLOBAL */
+        .chat-scroll::-webkit-scrollbar { width: 6px; }
+        .chat-scroll::-webkit-scrollbar-track { background: #f1f3f4; border-radius: 10px; }
+        .chat-scroll::-webkit-scrollbar-thumb { background: #dadce0; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-fundo text-texto min-h-screen flex flex-col font-sans">
+
+    <!-- Header minimalista estilo Google -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-borda">
+        <div class="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-14 md:h-16">
+
+                <!-- Logo -->
+                <div class="flex items-center pl-4 sm:pl-0">
+                    <h1 class="text-xl font-medium tracking-tight bg-gradient-to-r from-primario to-liberdade bg-clip-text text-transparent">
+                        <a href="{{ url_for('index') }}">THEMONF</a>
+                    </h1>
+                </div>
+
+                <!-- Menu Desktop + Ações -->
+                <div class="flex items-center gap-2 md:gap-3 pr-4 sm:pr-0">
+
+                    <!-- Navegação Desktop -->
+                    <nav class="hidden md:flex items-center gap-1">
+
+                        <a href="{{ url_for('index') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">
+                            <i class="fa fa-home text-lg"></i>
+                        </a>
+                        {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('trademonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">TRADE</a>
+                            <a href="{{ url_for('teramonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">TERA</a>
+                            <a href="{{ url_for('shopmonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">SHOP</a>
+                           <a href="{{ url_for('socimonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">SOCI</a>
+                            <a href="{{ url_for('gradumonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">GRADU</a>
+                            <a href="{{ url_for('promonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">PROMO</a>
+                            <a href="{{ url_for('lovemonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">LOVE</a>
+
+                            <a href="{{ url_for('telemonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">TELE</a>
+                            <a href="{{ url_for('suporte.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">Suporte</a>
+                        {% endif %}
+                    </nav>
+
+                    <!-- Menu Mobile Button -->
+                    <button id="menuMobileBtn" class="md:hidden w-10 h-10 rounded-full hover:bg-hover transition flex items-center justify-center">
+                        <i class="fa fa-bars text-texto_claro text-lg"></i>
+                    </button>
+
+                    <!-- Notificações (apenas logado) -->
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('teramonf.listar_notificacoes') }}" class="relative w-10 h-10 rounded-full hover:bg-hover transition flex items-center justify-center">
+                            <i class="fa fa-bell-o text-texto_claro text-lg"></i>
+                            {% set qtd_nao_lidas = current_user.notificacoes | selectattr('lida', 'equalto', false) | list | length %}
+                            {% if qtd_nao_lidas > 0 %}
+                                <span class="absolute top-1.5 right-1.5 bg-red-500 text-white text-[10px] font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1">
+                                    {{ qtd_nao_lidas if qtd_nao_lidas < 10 else '9+' }}
+                                </span>
+                            {% endif %}
+                        </a>
+                    {% endif %}
+
+                    <!-- Saldo TCOIN -->
+                    {% if current_user.is_authenticated %}
+                        <div class="flex items-center bg-dinheiro/10 text-dinheiro px-3 py-1.5 rounded-full">
+                            <i class="fa fa-coins text-xs mr-1.5 opacity-80"></i>
+                            <span class="text-sm font-semibold">{{ "%.2f"|format(current_user.saldo_tcoin) }}</span>
+                        </div>
+                    {% endif %}
+
+                    <!-- Menu Usuário -->
+                    <div class="relative">
+                        {% if current_user.is_authenticated %}
+                            <button id="userMenuBtn" class="flex items-center gap-2 px-2 py-1.5 rounded-full hover:bg-hover transition btn-transition group">
+                                <img src="{{ url_for('static', filename='uploads/perfis/' + (current_user.foto_perfil if current_user.foto_perfil is defined and current_user.foto_perfil else 'perfil_padrao.png')) }}"
+                                     alt="Avatar"
+                                     class="w-8 h-8 rounded-full object-cover ring-2 ring-transparent group-hover:ring-primario/20 transition">
+                                <span class="hidden sm:inline text-sm font-medium text-texto_claro group-hover:text-texto">
+                                    {% if current_user.nivel_acesso == 'admin' %}
+                                        Admin
+                                    {% else %}
+                                        {{ current_user.nome_completo.split(' ')[0] }}
+                                    {% endif %}
+                                </span>
+                                <i class="fa fa-chevron-down text-texto_claro text-[10px] transition-transform duration-200"></i>
+                            </button>
+
+                            <!-- Dropdown User -->
+                            <div id="userMenuDropdown" class="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-google border border-borda overflow-hidden hidden z-50">
+                                <div class="py-2">
+                                    <div class="px-4 py-2 border-b border-borda mb-1">
+                                        <p class="text-sm font-medium text-texto">{{ current_user.nome_completo }}</p>
+                                        <p class="text-xs text-texto_claro mt-0.5">{{ current_user.email }}</p>
+                                    </div>
+
+                                    <a href="{{ url_for('teramonf.editar_perfil') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm text-texto hover:bg-hover transition">
+                                        <i class="fa fa-user-circle-o w-5 text-texto_claro"></i> Meu Perfil
+                                    </a>
+
+                                    {% if current_user.tipo_perfil == 'terapeuta' %}
+                                        <a href="{{ url_for('teramonf.area_terapeuta') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm text-saude hover:bg-hover transition font-medium">
+                                            <i class="fa fa-stethoscope w-5"></i> Meus Atendimentos
+                                        </a>
+                                    {% endif %}
+
+                                    {% if current_user.nivel_acesso == 'admin' %}
+                                        <a href="{{ url_for('admin.painel') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-hover transition font-medium">
+                                            <i class="fa fa-shield w-5"></i> Admin
+                                        </a>
+                                        <a href="{{ url_for('admin.listar_solicitacoes_recuperacao') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm text-orange-600 hover:bg-hover transition font-medium">
+                                        <i class="fa fa-unlock-alt w-5"></i> Recuperação de Senha
+                                        </a>
+                                    {% endif %}
+
+                                    <div class="border-t border-borda my-1"></div>
+
+                                    <a href="{{ url_for('sair') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition">
+                                        <i class="fa fa-sign-out w-5"></i> Sair
+                                    </a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="flex gap-2">
+                                <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm text-primario font-medium hover:bg-hover rounded-full transition">Entrar</a>
+                                <a href="{{ url_for('cadastro') }}" class="px-4 py-2 text-sm bg-primario text-white font-medium rounded-full hover:bg-primario/90 transition shadow-google">Cadastrar</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="menuMobileDropdown" class="md:hidden hidden bg-white border-t border-borda shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 py-3">
+                <div class="flex flex-col space-y-1">
+                    <a href="{{ url_for('index') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium"><i class="fa fa-home text-lg"></i></a>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('trademonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">TRADE</a>
+                        <a href="{{ url_for('teramonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">TERA</a>
+                        <a href="{{ url_for('shopmonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">SHOP</a>
+                        <a href="{{ url_for('socimonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">SOCI</a>
+                        <a href="{{ url_for('gradumonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">GRADU</a>
+                        <a href="{{ url_for('promonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">PROMO</a>
+                        <a href="{{ url_for('lovemonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">LOVE</a>
+
+                        <a href="{{ url_for('telemonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">TELE</a>
+                        <a href="{{ url_for('suporte.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">Suporte</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-grow">
+        <div class="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 py-4 md:py-8">
+
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="mb-8 max-w-2xl mx-auto space-y-2 px-4">
+                        {% for categoria, mensagem in messages %}
+                            <div class="p-4 rounded-xl text-sm font-medium shadow-sm border-l-4
+                                {% if categoria == 'success' %}bg-green-50 text-green-90 border-green-500
+                                {% elif categoria == 'danger' %}bg-red-50 text-red-900 border-red-500
+                                {% else %}bg-yellow-50 text-yellow-900 border-yellow-500{% endif %}">
+                                {{ mensagem }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <!-- Página Inicial Melhorada -->
+            {% block content %}
+                <div class="text-center max-w-3xl mx-auto mb-16 px-4">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-texto to-primario bg-clip-text text-transparent mb-4">
+                        Bem-vindo ao THEMONF
+                    </h1>
+                    <p class="text-texto_claro text-lg md:text-xl font-light leading-relaxed">
+                        O sistema inteligente estruturado no Tripé:
+                        <span class="text-saude font-medium">Saúde</span>,
+                        <span class="text-dinheiro font-medium">Dinheiro</span> e
+                        <span class="text-liberdade font-medium">Liberdade</span>
+                    </p>
+                </div>
+
+                <!-- ✅ APENAS OS 5 MÓDULOS SOLICITADOS -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 max-w-6xl mx-auto px-4">
+
+                    <!-- Card TRADE -->
+                    <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                        <div class="p-6 lg:p-8">
+                            <div class="w-14 h-14 bg-dinheiro/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                                <i class="fa fa-line-chart text-3xl text-dinheiro"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-dinheiro mb-3">TRADE</h3>
+                            <p class="text-texto_claro text-sm leading-relaxed mb-6">
+                                Negócios, ofertas, serviços e trocas. Gere renda extra e movimente sua economia.
+                            </p>
+                            <a href="{{ url_for('trademonf.inicio') }}" class="inline-flex items-center gap-2 text-dinheiro font-medium hover:gap-3 transition-all">
+                                Acessar <i class="fa fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card TERA -->
+                    <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                        <div class="p-6 lg:p-8">
+                            <div class="w-14 h-14 bg-saude/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                                <i class="fa fa-heartbeat text-3xl text-saude"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-saude mb-3">TERA</h3>
+                            <p class="text-texto_claro text-sm leading-relaxed mb-6">
+                                Saúde integral, terapias, bem-estar e equilíbrio emocional com profissionais qualificados.
+                            </p>
+                            <a href="{{ url_for('teramonf.inicio') }}" class="inline-flex items-center gap-2 text-saude font-medium hover:gap-3 transition-all">
+                                Acessar <i class="fa fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card SHOP -->
+                    <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                        <div class="p-6 lg:p-8">
+                            <div class="w-14 h-14 bg-primario/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                                <i class="fa fa-shopping-bag text-3xl text-primario"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-primario mb-3">SHOP</h3>
+                            <p class="text-texto_claro text-sm leading-relaxed mb-6">
+                                Loja virtual completa. Produtos variados, pagamentos com TCOIN e entrega rápida.
+                            </p>
+                            <a href="{{ url_for('shopmonf.inicio') }}" class="inline-flex items-center gap-2 text-primario font-medium hover:gap-3 transition-all">
+                                Acessar <i class="fa fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card SOCI -->
+                    <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                        <div class="p-6 lg:p-8">
+                            <div class="w-14 h-14 bg-liberdade/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                                <i class="fa fa-users text-3xl text-liberdade"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-liberdade mb-3">SOCI</h3>
+                            <p class="text-texto_claro text-sm leading-relaxed mb-6">
+                                Comunidade, conexões, bate-papo, grupos e interação social entre membros.
+                            </p>
+                            <a href="{{ url_for('socimonf.inicio') }}" class="inline-flex items-center gap-2 text-liberdade font-medium hover:gap-3 transition-all">
+                                Acessar <i class="fa fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card GRADU -->
+                    <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                        <div class="p-6 lg:p-8">
+                            <div class="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                                <i class="fa fa-graduation-cap text-3xl text-indigo-600"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-indigo-600 mb-3">GRADU</h3>
+                            <p class="text-texto_claro text-sm leading-relaxed mb-6">
+                                Cursos, aulas ao vivo, conhecimento e capacitação para seu crescimento profissional.
+                            </p>
+                            <a href="{{ url_for('gradumonf.inicio') }}" class="inline-flex items-center gap-2 text-indigo-600 font-medium hover:gap-3 transition-all">
+                                Acessar <i class="fa fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Elemento adicional clean - Stats ou call to action sutil -->
+                <!--<div class="mt-20 text-center px-4">
+                    <div class="inline-flex items-center gap-2 text-texto_claro text-sm flex-wrap justify-center">
+                        <span class="w-1.5 h-1.5 bg-saude rounded-full"></span>
+                        <span>+500 usuários ativos</span>
+                        <span class="w-1.5 h-1.5 bg-dinheiro rounded-full"></span>
+                        <span>+10k TCOIN em circulação</span>
+                        <span class="w-1.5 h-1.5 bg-liberdade rounded-full"></span>
+                        <span>+100 cursos</span>
+                    </div>
+                </div>-->
+            {% endblock %}
+        </div>
+    </main>
+
+    <!-- ✅ SISTEMA DE CHAT GLOBAL THEMONF - APENAS O HTML, JS FOI MOVIDO -->
+    <div id="chatModal" class="fixed inset-0 z-[9999] hidden">
+        <!-- Fundo escuro -->
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="fecharChat()"></div>
+
+        <!-- Conteúdo do Chat -->
+        <div class="absolute bottom-0 right-0 w-full max-w-md h-[600px] max-h-[90vh] bg-white rounded-t-2xl shadow-2xl flex flex-col overflow-hidden transform transition-all">
+
+            <!-- Cabeçalho do Chat -->
+            <div class="bg-dinheiro text-white px-5 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                        <i class="fa fa-comments-o"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-medium text-sm" id="chatTitulo">Conversa</h4>
+                        <p class="text-xs text-white/80" id="chatSubtitulo">Plataforma THEMONF</p>
+                    </div>
+                </div>
+                <button onclick="fecharChat()" class="text-white/80 hover:text-white transition">
+                    <i class="fa fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Área de Mensagens -->
+            <div id="chatMensagens" class="flex-1 p-4 overflow-y-auto chat-scroll bg-fundo space-y-3">
+                <div class="text-center text-texto_claro text-xs py-6">
+                    <i class="fa fa-comments-o text-xl mb-2 block opacity-40"></i>
+                    Nenhuma mensagem ainda. Escreva abaixo!
+                </div>
+            </div>
+
+            <!-- Formulário de Envio -->
+            <form id="chatForm" class="p-3 border-t border-borda bg-white flex gap-2">
+                <input type="hidden" id="chatDestinatario" name="destinatario_id" value="">
+                <input type="hidden" id="chatOferta" name="oferta_id" value="">
+                <input type="text" name="mensagem" placeholder="Digite sua mensagem..."
+                       class="flex-1 px-4 py-2.5 bg-hover rounded-full text-sm border border-borda focus:outline-none focus:border-dinheiro focus:ring-1 focus:ring-dinheiro transition">
+                <button type="submit" class="w-9 h-9 bg-dinheiro text-white rounded-full flex items-center justify-center hover:bg-dinheiro/90 transition shadow-google">
+                    <i class="fa fa-paper-plane text-sm"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- ✅ FIM DO CHAT -->
+
+    <!-- ✅ RODAPÉ ATUALIZADO CONFORME PEDIDO -->
+    <footer class="border-t border-borda bg-white/50 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center md:text-left">
+
+                <!-- Copyright -->
+                <div>
+                    <p class="text-texto_claro text-sm">
+                        © {% if datetime %}{{ datetime.now().year }}{% else %}2026{% endif %} THEMONF<br>
+
+                    </p>
+                </div>
+
+                <!-- Suporte: Apenas Ícones -->
+                <div class="flex flex-col items-center gap-2">
+                    <p class="text-texto_claro text-sm font-medium">Suporte</p>
+                    <div class="flex items-center gap-4">
+                        <!-- Ícone WhatsApp -->
+                        <a href="https://wa.me/5591985230716" target="_blank"
+                           class="w-10 h-10 flex items-center justify-center rounded-full bg-green-50 text-green-600 hover:bg-green-100 hover:scale-110 transition-all shadow-sm">
+                            <i class="fa fa-whatsapp text-lg"></i>
+                        </a>
+                        <!-- Ícone E-mail -->
+                        <a href="mailto:themonf@proton.me"
+                           class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-50 text-primario hover:bg-blue-100 hover:scale-110 transition-all shadow-sm">
+                            <i class="fa fa-envelope text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links Úteis -->
+                <div class="flex justify-center md:justify-end gap-5">
+                    <a href="#" class="text-texto_claro text-sm hover:text-texto hover:underline transition">Termos</a>
+                    <a href="#" class="text-texto_claro text-sm hover:text-texto hover:underline transition">Privacidade</a>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- ✅ FIM DO RODAPÉ -->
+
+    <!-- Scripts gerais (apenas os menus, sem chat) -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fechar dropdowns ao clicar fora
+        function closeOnOutsideClick(btn, menu) {
+            if (!btn || !menu) return;
+            document.addEventListener('click', function(e) {
+                if (!btn.contains(e.target) && !menu.contains(e.target)) {
+                    menu.classList.add('hidden');
+                    btn.setAttribute('data-open', 'false');
+                }
+            });
+        }
+
+        // User Menu Dropdown
+        const userBtn = document.getElementById('userMenuBtn');
+        const userMenu = document.getElementById('userMenuDropdown');
+        if (userBtn && userMenu) {
+            userBtn.setAttribute('data-open', 'false');
+            userBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isOpen = !userMenu.classList.contains('hidden');
+                userMenu.classList.toggle('hidden');
+                this.setAttribute('data-open', (!isOpen).toString());
+            });
+            closeOnOutsideClick(userBtn, userMenu);
+        }
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('menuMobileBtn');
+        const menuDrop = document.getElementById('menuMobileDropdown');
+        if (menuBtn && menuDrop) {
+            menuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menuDrop.classList.toggle('hidden');
+            });
+            closeOnOutsideClick(menuBtn, menuDrop);
+        }
+
+        // Fechar mobile menu ao clicar em links
+        if (menuDrop) {
+            menuDrop.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuDrop.classList.add('hidden');
+                });
+            });
+        }
     });
-  </script>
+    </script>
+
 </body>
 </html>

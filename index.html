@@ -11,18 +11,16 @@
             theme: {
                 extend: {
                     colors: {
-                        // Paleta renovada - contraste melhorado
-                        saude: '#0f7b3a',     // verde mais sólido e acessível
-                        dinheiro: '#e67e22',  // laranja equilibrado
-                        liberdade: '#2c7da0', // azul suave mas legível
-                        primario: '#1a73e8',  // azul Google
+                        saude: '#0f7b3a',
+                        dinheiro: '#e67e22',
+                        liberdade: '#2c7da0',
+                        primario: '#1a73e8',
                         secundario: '#5f6368',
-                        // Tons neutros com melhor contraste
                         fundo: '#ffffff',
                         card: '#ffffff',
-                        texto: '#202124',      // quase preto (Google)
-                        texto_claro: '#5f6368', // cinza Google
-                        borda: '#dadce0',      // cinza suave
+                        texto: '#202124',
+                        texto_claro: '#5f6368',
+                        borda: '#dadce0',
                         hover: '#f1f3f4',
                     },
                     fontFamily: {
@@ -31,16 +29,12 @@
                     boxShadow: {
                         'google': '0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)',
                         'google-hover': '0 1px 3px 0 rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)',
-                    },
-                    spacing: {
-                        '18': '4.5rem',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Transições suaves e reset minimalista */
         * {
             -webkit-tap-highlight-color: transparent;
         }
@@ -63,19 +57,6 @@
             transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
         }
 
-        /* Animações suaves para dropdowns */
-        .dropdown-enter {
-            opacity: 0;
-            transform: translateY(-8px);
-        }
-
-        .dropdown-enter-active {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.15s, transform 0.15s;
-        }
-
-        /* ✅ ESTILOS DO CHAT GLOBAL */
         .chat-scroll::-webkit-scrollbar { width: 6px; }
         .chat-scroll::-webkit-scrollbar-track { background: #f1f3f4; border-radius: 10px; }
         .chat-scroll::-webkit-scrollbar-thumb { background: #dadce0; border-radius: 10px; }
@@ -83,7 +64,7 @@
 </head>
 <body class="bg-fundo text-texto min-h-screen flex flex-col font-sans">
 
-    <!-- Header minimalista estilo Google -->
+    <!-- Header -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-borda">
         <div class="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-14 md:h-16">
@@ -91,7 +72,7 @@
                 <!-- Logo -->
                 <div class="flex items-center pl-4 sm:pl-0">
                     <h1 class="text-xl font-medium tracking-tight bg-gradient-to-r from-primario to-liberdade bg-clip-text text-transparent">
-                        <a href="{{ url_for('index') }}">THEMONF</a>
+                        <a href="https://paulothemonf.pythonanywhere.com/">THEMONF</a>
                     </h1>
                 </div>
 
@@ -100,108 +81,23 @@
 
                     <!-- Navegação Desktop -->
                     <nav class="hidden md:flex items-center gap-1">
-
-                        <a href="{{ url_for('index') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">
+                        <a href="https://paulothemonf.pythonanywhere.com/" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">
                             <i class="fa fa-home text-lg"></i>
                         </a>
-                        {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('trademonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">TRADE</a>
-                            <a href="{{ url_for('teramonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">TERA</a>
-                            <a href="{{ url_for('shopmonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">SHOP</a>
-                           <a href="{{ url_for('socimonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">SOCI</a>
-                            <a href="{{ url_for('gradumonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">GRADU</a>
-                            <a href="{{ url_for('promonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">PROMO</a>
-                            <a href="{{ url_for('lovemonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">LOVE</a>
-
-                            <a href="{{ url_for('telemonf.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">TELE</a>
-                            <a href="{{ url_for('suporte.inicio') }}" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">Suporte</a>
-                        {% endif %}
+                        <!-- Links dos módulos -->
+                        <a href="https://paulothemonf.pythonanywhere.com/trademonf/inicio" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">TRADE</a>
+                        <a href="https://paulothemonf.pythonanywhere.com/teramonf/inicio" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">TERA</a>
+                        <a href="https://paulothemonf.pythonanywhere.com/shopmonf/inicio" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">SHOP</a>
+                        <a href="https://paulothemonf.pythonanywhere.com/socimonf/inicio" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">SOCI</a>
+                        <a href="https://paulothemonf.pythonanywhere.com/gradumonf/inicio" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">GRADU</a>
                     </nav>
 
-                    <!-- Menu Mobile Button -->
-                    <button id="menuMobileBtn" class="md:hidden w-10 h-10 rounded-full hover:bg-hover transition flex items-center justify-center">
-                        <i class="fa fa-bars text-texto_claro text-lg"></i>
-                    </button>
-
-                    <!-- Notificações (apenas logado) -->
-                    {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('teramonf.listar_notificacoes') }}" class="relative w-10 h-10 rounded-full hover:bg-hover transition flex items-center justify-center">
-                            <i class="fa fa-bell-o text-texto_claro text-lg"></i>
-                            {% set qtd_nao_lidas = current_user.notificacoes | selectattr('lida', 'equalto', false) | list | length %}
-                            {% if qtd_nao_lidas > 0 %}
-                                <span class="absolute top-1.5 right-1.5 bg-red-500 text-white text-[10px] font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1">
-                                    {{ qtd_nao_lidas if qtd_nao_lidas < 10 else '9+' }}
-                                </span>
-                            {% endif %}
-                        </a>
-                    {% endif %}
-
-                    <!-- Saldo TCOIN -->
-                    {% if current_user.is_authenticated %}
-                        <div class="flex items-center bg-dinheiro/10 text-dinheiro px-3 py-1.5 rounded-full">
-                            <i class="fa fa-coins text-xs mr-1.5 opacity-80"></i>
-                            <span class="text-sm font-semibold">{{ "%.2f"|format(current_user.saldo_tcoin) }}</span>
-                        </div>
-                    {% endif %}
-
-                    <!-- Menu Usuário -->
-                    <div class="relative">
-                        {% if current_user.is_authenticated %}
-                            <button id="userMenuBtn" class="flex items-center gap-2 px-2 py-1.5 rounded-full hover:bg-hover transition btn-transition group">
-                                <img src="{{ url_for('static', filename='uploads/perfis/' + (current_user.foto_perfil if current_user.foto_perfil is defined and current_user.foto_perfil else 'perfil_padrao.png')) }}"
-                                     alt="Avatar"
-                                     class="w-8 h-8 rounded-full object-cover ring-2 ring-transparent group-hover:ring-primario/20 transition">
-                                <span class="hidden sm:inline text-sm font-medium text-texto_claro group-hover:text-texto">
-                                    {% if current_user.nivel_acesso == 'admin' %}
-                                        Admin
-                                    {% else %}
-                                        {{ current_user.nome_completo.split(' ')[0] }}
-                                    {% endif %}
-                                </span>
-                                <i class="fa fa-chevron-down text-texto_claro text-[10px] transition-transform duration-200"></i>
-                            </button>
-
-                            <!-- Dropdown User -->
-                            <div id="userMenuDropdown" class="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-google border border-borda overflow-hidden hidden z-50">
-                                <div class="py-2">
-                                    <div class="px-4 py-2 border-b border-borda mb-1">
-                                        <p class="text-sm font-medium text-texto">{{ current_user.nome_completo }}</p>
-                                        <p class="text-xs text-texto_claro mt-0.5">{{ current_user.email }}</p>
-                                    </div>
-
-                                    <a href="{{ url_for('teramonf.editar_perfil') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm text-texto hover:bg-hover transition">
-                                        <i class="fa fa-user-circle-o w-5 text-texto_claro"></i> Meu Perfil
-                                    </a>
-
-                                    {% if current_user.tipo_perfil == 'terapeuta' %}
-                                        <a href="{{ url_for('teramonf.area_terapeuta') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm text-saude hover:bg-hover transition font-medium">
-                                            <i class="fa fa-stethoscope w-5"></i> Meus Atendimentos
-                                        </a>
-                                    {% endif %}
-
-                                    {% if current_user.nivel_acesso == 'admin' %}
-                                        <a href="{{ url_for('admin.painel') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-hover transition font-medium">
-                                            <i class="fa fa-shield w-5"></i> Admin
-                                        </a>
-                                        <a href="{{ url_for('admin.listar_solicitacoes_recuperacao') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm text-orange-600 hover:bg-hover transition font-medium">
-                                        <i class="fa fa-unlock-alt w-5"></i> Recuperação de Senha
-                                        </a>
-                                    {% endif %}
-
-                                    <div class="border-t border-borda my-1"></div>
-
-                                    <a href="{{ url_for('sair') }}" class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition">
-                                        <i class="fa fa-sign-out w-5"></i> Sair
-                                    </a>
-                                </div>
-                            </div>
-                        {% else %}
-                            <div class="flex gap-2">
-                                <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm text-primario font-medium hover:bg-hover rounded-full transition">Entrar</a>
-                                <a href="{{ url_for('cadastro') }}" class="px-4 py-2 text-sm bg-primario text-white font-medium rounded-full hover:bg-primario/90 transition shadow-google">Cadastrar</a>
-                            </div>
-                        {% endif %}
+                    <!-- Botões Entrar / Cadastrar -->
+                    <div class="flex gap-2">
+                        <a href="https://paulothemonf.pythonanywhere.com/login" class="px-4 py-2 text-sm text-primario font-medium hover:bg-hover rounded-full transition">Entrar</a>
+                        <a href="https://paulothemonf.pythonanywhere.com/cadastro" class="px-4 py-2 text-sm bg-primario text-white font-medium rounded-full hover:bg-primario/90 transition shadow-google">Cadastrar</a>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -210,19 +106,15 @@
         <div id="menuMobileDropdown" class="md:hidden hidden bg-white border-t border-borda shadow-lg">
             <div class="max-w-7xl mx-auto px-4 py-3">
                 <div class="flex flex-col space-y-1">
-                    <a href="{{ url_for('index') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium"><i class="fa fa-home text-lg"></i></a>
-                    {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('trademonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">TRADE</a>
-                        <a href="{{ url_for('teramonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">TERA</a>
-                        <a href="{{ url_for('shopmonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">SHOP</a>
-                        <a href="{{ url_for('socimonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">SOCI</a>
-                        <a href="{{ url_for('gradumonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">GRADU</a>
-                        <a href="{{ url_for('promonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">PROMO</a>
-                        <a href="{{ url_for('lovemonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">LOVE</a>
-
-                        <a href="{{ url_for('telemonf.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">TELE</a>
-                        <a href="{{ url_for('suporte.inicio') }}" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">Suporte</a>
-                    {% endif %}
+                    <a href="https://paulothemonf.pythonanywhere.com/" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium"><i class="fa fa-home text-lg"></i> Início</a>
+                    <a href="https://paulothemonf.pythonanywhere.com/trademonf/inicio" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">TRADE</a>
+                    <a href="https://paulothemonf.pythonanywhere.com/teramonf/inicio" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">TERA</a>
+                    <a href="https://paulothemonf.pythonanywhere.com/shopmonf/inicio" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">SHOP</a>
+                    <a href="https://paulothemonf.pythonanywhere.com/socimonf/inicio" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">SOCI</a>
+                    <a href="https://paulothemonf.pythonanywhere.com/gradumonf/inicio" class="px-3 py-2.5 text-texto hover:bg-hover rounded-lg transition font-medium">GRADU</a>
+                    <div class="border-t border-borda my-1"></div>
+                    <a href="https://paulothemonf.pythonanywhere.com/login" class="px-3 py-2.5 text-primario hover:bg-hover rounded-lg transition font-medium">Entrar</a>
+                    <a href="https://paulothemonf.pythonanywhere.com/cadastro" class="px-3 py-2.5 text-primario hover:bg-hover rounded-lg transition font-medium">Cadastrar</a>
                 </div>
             </div>
         </div>
@@ -232,183 +124,120 @@
     <main class="flex-grow">
         <div class="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 py-4 md:py-8">
 
-            <!-- Flash Messages -->
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    <div class="mb-8 max-w-2xl mx-auto space-y-2 px-4">
-                        {% for categoria, mensagem in messages %}
-                            <div class="p-4 rounded-xl text-sm font-medium shadow-sm border-l-4
-                                {% if categoria == 'success' %}bg-green-50 text-green-90 border-green-500
-                                {% elif categoria == 'danger' %}bg-red-50 text-red-900 border-red-500
-                                {% else %}bg-yellow-50 text-yellow-900 border-yellow-500{% endif %}">
-                                {{ mensagem }}
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            {% endwith %}
+            <!-- Seção Principal -->
+            <div class="text-center max-w-3xl mx-auto mb-16 px-4">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-texto to-primario bg-clip-text text-transparent mb-4">
+                    Bem-vindo ao THEMONF
+                </h1>
+                <p class="text-texto_claro text-lg md:text-xl font-light leading-relaxed">
+                    O sistema inteligente estruturado no Tripé:
+                    <span class="text-saude font-medium">Saúde</span>,
+                    <span class="text-dinheiro font-medium">Dinheiro</span> e
+                    <span class="text-liberdade font-medium">Liberdade</span>
+                </p>
+            </div>
 
-            <!-- Página Inicial Melhorada -->
-            {% block content %}
-                <div class="text-center max-w-3xl mx-auto mb-16 px-4">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-texto to-primario bg-clip-text text-transparent mb-4">
-                        Bem-vindo ao THEMONF
-                    </h1>
-                    <p class="text-texto_claro text-lg md:text-xl font-light leading-relaxed">
-                        O sistema inteligente estruturado no Tripé:
-                        <span class="text-saude font-medium">Saúde</span>,
-                        <span class="text-dinheiro font-medium">Dinheiro</span> e
-                        <span class="text-liberdade font-medium">Liberdade</span>
-                    </p>
+            <!-- Grid com os 5 Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 max-w-6xl mx-auto px-4">
+
+                <!-- Card TRADE -->
+                <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                    <div class="p-6 lg:p-8">
+                        <div class="w-14 h-14 bg-dinheiro/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa fa-line-chart text-3xl text-dinheiro"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-dinheiro mb-3">TRADE</h3>
+                        <p class="text-texto_claro text-sm leading-relaxed mb-6">
+                            Negócios, ofertas, serviços e trocas. Gere renda extra e movimente sua economia.
+                        </p>
+                        <a href="https://paulothemonf.pythonanywhere.com/trademonf/inicio" class="inline-flex items-center gap-2 text-dinheiro font-medium hover:gap-3 transition-all">
+                            Acessar <i class="fa fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- ✅ APENAS OS 5 MÓDULOS SOLICITADOS -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 max-w-6xl mx-auto px-4">
-
-                    <!-- Card TRADE -->
-                    <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
-                        <div class="p-6 lg:p-8">
-                            <div class="w-14 h-14 bg-dinheiro/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                                <i class="fa fa-line-chart text-3xl text-dinheiro"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-dinheiro mb-3">TRADE</h3>
-                            <p class="text-texto_claro text-sm leading-relaxed mb-6">
-                                Negócios, ofertas, serviços e trocas. Gere renda extra e movimente sua economia.
-                            </p>
-                            <a href="{{ url_for('trademonf.inicio') }}" class="inline-flex items-center gap-2 text-dinheiro font-medium hover:gap-3 transition-all">
-                                Acessar <i class="fa fa-arrow-right text-sm"></i>
-                            </a>
+                <!-- Card TERA -->
+                <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                    <div class="p-6 lg:p-8">
+                        <div class="w-14 h-14 bg-saude/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa fa-heartbeat text-3xl text-saude"></i>
                         </div>
+                        <h3 class="text-2xl font-bold text-saude mb-3">TERA</h3>
+                        <p class="text-texto_claro text-sm leading-relaxed mb-6">
+                            Saúde integral, terapias, bem-estar e equilíbrio emocional com profissionais qualificados.
+                        </p>
+                        <a href="https://paulothemonf.pythonanywhere.com/teramonf/inicio" class="inline-flex items-center gap-2 text-saude font-medium hover:gap-3 transition-all">
+                            Acessar <i class="fa fa-arrow-right text-sm"></i>
+                        </a>
                     </div>
-
-                    <!-- Card TERA -->
-                    <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
-                        <div class="p-6 lg:p-8">
-                            <div class="w-14 h-14 bg-saude/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                                <i class="fa fa-heartbeat text-3xl text-saude"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-saude mb-3">TERA</h3>
-                            <p class="text-texto_claro text-sm leading-relaxed mb-6">
-                                Saúde integral, terapias, bem-estar e equilíbrio emocional com profissionais qualificados.
-                            </p>
-                            <a href="{{ url_for('teramonf.inicio') }}" class="inline-flex items-center gap-2 text-saude font-medium hover:gap-3 transition-all">
-                                Acessar <i class="fa fa-arrow-right text-sm"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Card SHOP -->
-                    <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
-                        <div class="p-6 lg:p-8">
-                            <div class="w-14 h-14 bg-primario/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                                <i class="fa fa-shopping-bag text-3xl text-primario"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-primario mb-3">SHOP</h3>
-                            <p class="text-texto_claro text-sm leading-relaxed mb-6">
-                                Loja virtual completa. Produtos variados, pagamentos com TCOIN e entrega rápida.
-                            </p>
-                            <a href="{{ url_for('shopmonf.inicio') }}" class="inline-flex items-center gap-2 text-primario font-medium hover:gap-3 transition-all">
-                                Acessar <i class="fa fa-arrow-right text-sm"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Card SOCI -->
-                    <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
-                        <div class="p-6 lg:p-8">
-                            <div class="w-14 h-14 bg-liberdade/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                                <i class="fa fa-users text-3xl text-liberdade"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-liberdade mb-3">SOCI</h3>
-                            <p class="text-texto_claro text-sm leading-relaxed mb-6">
-                                Comunidade, conexões, bate-papo, grupos e interação social entre membros.
-                            </p>
-                            <a href="{{ url_for('socimonf.inicio') }}" class="inline-flex items-center gap-2 text-liberdade font-medium hover:gap-3 transition-all">
-                                Acessar <i class="fa fa-arrow-right text-sm"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Card GRADU -->
-                    <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
-                        <div class="p-6 lg:p-8">
-                            <div class="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                                <i class="fa fa-graduation-cap text-3xl text-indigo-600"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-indigo-600 mb-3">GRADU</h3>
-                            <p class="text-texto_claro text-sm leading-relaxed mb-6">
-                                Cursos, aulas ao vivo, conhecimento e capacitação para seu crescimento profissional.
-                            </p>
-                            <a href="{{ url_for('gradumonf.inicio') }}" class="inline-flex items-center gap-2 text-indigo-600 font-medium hover:gap-3 transition-all">
-                                Acessar <i class="fa fa-arrow-right text-sm"></i>
-                            </a>
-                        </div>
-                    </div>
-
                 </div>
 
-                <!-- Elemento adicional clean - Stats ou call to action sutil -->
-                <!--<div class="mt-20 text-center px-4">
-                    <div class="inline-flex items-center gap-2 text-texto_claro text-sm flex-wrap justify-center">
-                        <span class="w-1.5 h-1.5 bg-saude rounded-full"></span>
-                        <span>+500 usuários ativos</span>
-                        <span class="w-1.5 h-1.5 bg-dinheiro rounded-full"></span>
-                        <span>+10k TCOIN em circulação</span>
-                        <span class="w-1.5 h-1.5 bg-liberdade rounded-full"></span>
-                        <span>+100 cursos</span>
+                <!-- Card SHOP -->
+                <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                    <div class="p-6 lg:p-8">
+                        <div class="w-14 h-14 bg-primario/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa fa-shopping-bag text-3xl text-primario"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primario mb-3">SHOP</h3>
+                        <p class="text-texto_claro text-sm leading-relaxed mb-6">
+                            Loja virtual completa. Produtos variados, pagamentos com TCOIN e entrega rápida.
+                        </p>
+                        <a href="https://paulothemonf.pythonanywhere.com/shopmonf/inicio" class="inline-flex items-center gap-2 text-primario font-medium hover:gap-3 transition-all">
+                            Acessar <i class="fa fa-arrow-right text-sm"></i>
+                        </a>
                     </div>
-                </div>-->
-            {% endblock %}
+                </div>
+
+                <!-- Card SOCI -->
+                <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                    <div class="p-6 lg:p-8">
+                        <div class="w-14 h-14 bg-liberdade/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa fa-users text-3xl text-liberdade"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-liberdade mb-3">SOCI</h3>
+                        <p class="text-texto_claro text-sm leading-relaxed mb-6">
+                            Comunidade, conexões, bate-papo, grupos e interação social entre membros.
+                        </p>
+                        <a href="https://paulothemonf.pythonanywhere.com/socimonf/inicio" class="inline-flex items-center gap-2 text-liberdade font-medium hover:gap-3 transition-all">
+                            Acessar <i class="fa fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card GRADU -->
+                <div class="group bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                    <div class="p-6 lg:p-8">
+                        <div class="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa fa-graduation-cap text-3xl text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-3">GRADU</h3>
+                        <p class="text-texto_claro text-sm leading-relaxed mb-6">
+                            Cursos, aulas ao vivo, conhecimento e capacitação para seu crescimento profissional.
+                        </p>
+                        <a href="https://paulothemonf.pythonanywhere.com/gradumonf/inicio" class="inline-flex items-center gap-2 text-indigo-600 font-medium hover:gap-3 transition-all">
+                            Acessar <i class="fa fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Estatísticas -->
+            <div class="mt-20 text-center px-4">
+                <div class="inline-flex items-center gap-2 text-texto_claro text-sm flex-wrap justify-center">
+                    <span class="w-1.5 h-1.5 bg-saude rounded-full"></span>
+                    <span>+500 usuários ativos</span>
+                    <span class="w-1.5 h-1.5 bg-dinheiro rounded-full"></span>
+                    <span>+10k TCOIN em circulação</span>
+                    <span class="w-1.5 h-1.5 bg-liberdade rounded-full"></span>
+                    <span>+100 cursos</span>
+                </div>
+            </div>
+
         </div>
     </main>
 
-    <!-- ✅ SISTEMA DE CHAT GLOBAL THEMONF - APENAS O HTML, JS FOI MOVIDO -->
-    <div id="chatModal" class="fixed inset-0 z-[9999] hidden">
-        <!-- Fundo escuro -->
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="fecharChat()"></div>
-
-        <!-- Conteúdo do Chat -->
-        <div class="absolute bottom-0 right-0 w-full max-w-md h-[600px] max-h-[90vh] bg-white rounded-t-2xl shadow-2xl flex flex-col overflow-hidden transform transition-all">
-
-            <!-- Cabeçalho do Chat -->
-            <div class="bg-dinheiro text-white px-5 py-4 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                        <i class="fa fa-comments-o"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-medium text-sm" id="chatTitulo">Conversa</h4>
-                        <p class="text-xs text-white/80" id="chatSubtitulo">Plataforma THEMONF</p>
-                    </div>
-                </div>
-                <button onclick="fecharChat()" class="text-white/80 hover:text-white transition">
-                    <i class="fa fa-times text-lg"></i>
-                </button>
-            </div>
-
-            <!-- Área de Mensagens -->
-            <div id="chatMensagens" class="flex-1 p-4 overflow-y-auto chat-scroll bg-fundo space-y-3">
-                <div class="text-center text-texto_claro text-xs py-6">
-                    <i class="fa fa-comments-o text-xl mb-2 block opacity-40"></i>
-                    Nenhuma mensagem ainda. Escreva abaixo!
-                </div>
-            </div>
-
-            <!-- Formulário de Envio -->
-            <form id="chatForm" class="p-3 border-t border-borda bg-white flex gap-2">
-                <input type="hidden" id="chatDestinatario" name="destinatario_id" value="">
-                <input type="hidden" id="chatOferta" name="oferta_id" value="">
-                <input type="text" name="mensagem" placeholder="Digite sua mensagem..."
-                       class="flex-1 px-4 py-2.5 bg-hover rounded-full text-sm border border-borda focus:outline-none focus:border-dinheiro focus:ring-1 focus:ring-dinheiro transition">
-                <button type="submit" class="w-9 h-9 bg-dinheiro text-white rounded-full flex items-center justify-center hover:bg-dinheiro/90 transition shadow-google">
-                    <i class="fa fa-paper-plane text-sm"></i>
-                </button>
-            </form>
-        </div>
-    </div>
-    <!-- ✅ FIM DO CHAT -->
-
-    <!-- ✅ RODAPÉ ATUALIZADO CONFORME PEDIDO -->
+    <!-- Rodapé -->
     <footer class="border-t border-borda bg-white/50 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center md:text-left">
@@ -416,8 +245,8 @@
                 <!-- Copyright -->
                 <div>
                     <p class="text-texto_claro text-sm">
-                        © {% if datetime %}{{ datetime.now().year }}{% else %}2026{% endif %} THEMONF<br>
-
+                        © 2026 THEMONF<br>
+                        Todos os direitos reservados.
                     </p>
                 </div>
 
@@ -426,13 +255,11 @@
                     <p class="text-texto_claro text-sm font-medium">Suporte</p>
                     <div class="flex items-center gap-4">
                         <!-- Ícone WhatsApp -->
-                        <a href="https://wa.me/5591985230716" target="_blank"
-                           class="w-10 h-10 flex items-center justify-center rounded-full bg-green-50 text-green-600 hover:bg-green-100 hover:scale-110 transition-all shadow-sm">
+                        <a href="https://wa.me/5591985230716" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full bg-green-50 text-green-600 hover:bg-green-100 hover:scale-110 transition-all shadow-sm">
                             <i class="fa fa-whatsapp text-lg"></i>
                         </a>
                         <!-- Ícone E-mail -->
-                        <a href="mailto:themonf@proton.me"
-                           class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-50 text-primario hover:bg-blue-100 hover:scale-110 transition-all shadow-sm">
+                        <a href="mailto:themonf@proton.me" class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-50 text-primario hover:bg-blue-100 hover:scale-110 transition-all shadow-sm">
                             <i class="fa fa-envelope text-lg"></i>
                         </a>
                     </div>
@@ -442,55 +269,32 @@
                 <div class="flex justify-center md:justify-end gap-5">
                     <a href="#" class="text-texto_claro text-sm hover:text-texto hover:underline transition">Termos</a>
                     <a href="#" class="text-texto_claro text-sm hover:text-texto hover:underline transition">Privacidade</a>
-
                 </div>
 
             </div>
         </div>
     </footer>
-    <!-- ✅ FIM DO RODAPÉ -->
 
-    <!-- Scripts gerais (apenas os menus, sem chat) -->
+    <!-- Scripts para Menu Mobile -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Fechar dropdowns ao clicar fora
-        function closeOnOutsideClick(btn, menu) {
-            if (!btn || !menu) return;
-            document.addEventListener('click', function(e) {
-                if (!btn.contains(e.target) && !menu.contains(e.target)) {
-                    menu.classList.add('hidden');
-                    btn.setAttribute('data-open', 'false');
-                }
-            });
-        }
-
-        // User Menu Dropdown
-        const userBtn = document.getElementById('userMenuBtn');
-        const userMenu = document.getElementById('userMenuDropdown');
-        if (userBtn && userMenu) {
-            userBtn.setAttribute('data-open', 'false');
-            userBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const isOpen = !userMenu.classList.contains('hidden');
-                userMenu.classList.toggle('hidden');
-                this.setAttribute('data-open', (!isOpen).toString());
-            });
-            closeOnOutsideClick(userBtn, userMenu);
-        }
-
-        // Mobile Menu
         const menuBtn = document.getElementById('menuMobileBtn');
         const menuDrop = document.getElementById('menuMobileDropdown');
+        
         if (menuBtn && menuDrop) {
             menuBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 menuDrop.classList.toggle('hidden');
             });
-            closeOnOutsideClick(menuBtn, menuDrop);
-        }
+            
+            // Fechar ao clicar fora
+            document.addEventListener('click', function(e) {
+                if (!menuBtn.contains(e.target) && !menuDrop.contains(e.target)) {
+                    menuDrop.classList.add('hidden');
+                }
+            });
 
-        // Fechar mobile menu ao clicar em links
-        if (menuDrop) {
+            // Fechar ao clicar em link
             menuDrop.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     menuDrop.classList.add('hidden');

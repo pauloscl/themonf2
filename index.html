@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>THEMONF · Saúde · Dinheiro · Liberdade</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -22,6 +23,8 @@
                         texto_claro: '#5f6368',
                         borda: '#dadce0',
                         hover: '#f1f3f4',
+                        // Cor personalizada para o TELE
+                        tele: '#f97316', // laranja vibrante
                     },
                     fontFamily: {
                         sans: ['Google Sans', 'Roboto', 'system-ui', 'Segoe UI', 'sans-serif'],
@@ -57,9 +60,24 @@
             transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
         }
 
-        .chat-scroll::-webkit-scrollbar { width: 6px; }
-        .chat-scroll::-webkit-scrollbar-track { background: #f1f3f4; border-radius: 10px; }
-        .chat-scroll::-webkit-scrollbar-thumb { background: #dadce0; border-radius: 10px; }
+        .chat-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-scroll::-webkit-scrollbar-track {
+            background: #f1f3f4;
+            border-radius: 10px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: #dadce0;
+            border-radius: 10px;
+        }
+
+        /* Ajuste para garantir 6 cards em uma linha no desktop */
+        @media (min-width: 1280px) {
+            .grid-cols-6-xl {
+                grid-template-columns: repeat(6, minmax(0, 1fr));
+            }
+        }
     </style>
 </head>
 <body class="bg-fundo text-texto min-h-screen flex flex-col font-sans">
@@ -91,7 +109,7 @@
                         <a href="https://paulothemonf.pythonanywhere.com/login?next=%2Ftrademonf%2F" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">SOCI</a>
                         <a href="https://paulothemonf.pythonanywhere.com/login?next=%2Ftrademonf%2F" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">GRADU</a>
                         <a href="https://paulothemonf.pythonanywhere.com/login?next=%2Ftrademonf%2F" class="px-3 py-2 text-sm text-texto_claro hover:text-texto rounded-md hover:bg-hover transition btn-transition font-medium">TELE</a>
-                        
+
                     </nav>
 
                     <!-- Botões Entrar / Cadastrar -->
@@ -129,9 +147,6 @@
 
             <!-- Seção Principal -->
             <div class="text-center max-w-3xl mx-auto mb-16 px-4">
-                <!--<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-texto to-primario bg-clip-text text-transparent mb-4">
-                    THEMONF
-                </h1>-->
                 <p class="text-texto_claro text-lg md:text-xl font-light leading-relaxed">
                     O sistema estruturado no Tripé:
                     <span class="text-saude font-medium">Saúde</span>,
@@ -140,8 +155,9 @@
                 </p>
             </div>
 
-            <!-- Grid com os 5 Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 max-w-6xl mx-auto px-4">
+            <!-- Grid com os 6 Cards em uma única linha no desktop -->
+            <!-- Uso de grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 para garantir 6 cards em telas grandes -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 lg:gap-8 max-w-7xl mx-auto px-4">
 
                 <!-- Card TRADE -->
                 <a href="https://paulothemonf.pythonanywhere.com/login" class="group block bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
@@ -223,22 +239,25 @@
                     </div>
                 </a>
 
-                 <!-- Card TELE -->
-                 <a href="https://paulothemonf.pythonanywhere.com/login" class="group block bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                <!-- Card TELE com cor diferenciada (laranja) -->
+                <a href="https://paulothemonf.pythonanywhere.com/login" class="group block bg-card rounded-2xl border-2 border-tele overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
                     <div class="p-6 lg:p-8 text-center">
-                        <div class="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform mx-auto">
-                            <i class="fa fa-wifi text-3xl text-indigo-600"></i>
+                        <!-- Ícone com background e cor laranja -->
+                        <div class="w-14 h-14 bg-tele/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform mx-auto">
+                            <i class="fa fa-wifi text-3xl text-tele"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-indigo-600 mb-3">TELE</h3>
+                        <!-- Título em laranja -->
+                        <h3 class="text-2xl font-bold text-tele mb-3">TELE</h3>
                         <p class="text-texto_claro text-sm leading-relaxed mb-6 text-left">
                             Rádio interna, transmissão ao vivo e comunicação instantânea
                         </p>
-                        <span class="inline-flex items-center gap-2 text-indigo-600 font-medium hover:gap-3 transition-all justify-center w-full">
+                        <!-- Link com cor laranja -->
+                        <span class="inline-flex items-center gap-2 text-tele font-medium hover:gap-3 transition-all justify-center w-full">
                             Acessar <i class="fa fa-arrow-right text-sm"></i>
                         </span>
                     </div>
                 </a>
-            </div>          
+            </div>
 
         </div>
     </main>
@@ -283,31 +302,31 @@
 
     <!-- Scripts para Menu Mobile -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuBtn = document.getElementById('menuMobileBtn');
-        const menuDrop = document.getElementById('menuMobileDropdown');
-        
-        if (menuBtn && menuDrop) {
-            menuBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                menuDrop.classList.toggle('hidden');
-            });
-            
-            // Fechar ao clicar fora
-            document.addEventListener('click', function(e) {
-                if (!menuBtn.contains(e.target) && !menuDrop.contains(e.target)) {
-                    menuDrop.classList.add('hidden');
-                }
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menuMobileBtn');
+            const menuDrop = document.getElementById('menuMobileDropdown');
 
-            // Fechar ao clicar em link
-            menuDrop.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    menuDrop.classList.add('hidden');
+            if (menuBtn && menuDrop) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    menuDrop.classList.toggle('hidden');
                 });
-            });
-        }
-    });
+
+                // Fechar ao clicar fora
+                document.addEventListener('click', function(e) {
+                    if (!menuBtn.contains(e.target) && !menuDrop.contains(e.target)) {
+                        menuDrop.classList.add('hidden');
+                    }
+                });
+
+                // Fechar ao clicar em link
+                menuDrop.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuDrop.classList.add('hidden');
+                    });
+                });
+            }
+        });
     </script>
 
 </body>

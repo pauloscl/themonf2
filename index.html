@@ -23,8 +23,8 @@
                         texto_claro: '#5f6368',
                         borda: '#dadce0',
                         hover: '#f1f3f4',
-                        // Cor personalizada para o TELE
-                        tele: '#f97316', // laranja vibrante
+                        // Cor personalizada para o TELE (roxo)
+                        'roxo-tele': '#7c3aed',
                     },
                     fontFamily: {
                         sans: ['Google Sans', 'Roboto', 'system-ui', 'Segoe UI', 'sans-serif'],
@@ -156,7 +156,6 @@
             </div>
 
             <!-- Grid com os 6 Cards em uma única linha no desktop -->
-            <!-- Uso de grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 para garantir 6 cards em telas grandes -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 lg:gap-8 max-w-7xl mx-auto px-4">
 
                 <!-- Card TRADE -->
@@ -239,20 +238,20 @@
                     </div>
                 </a>
 
-                <!-- Card TELE com cor diferenciada (laranja) -->
-                <a href="https://paulothemonf.pythonanywhere.com/login" class="group block bg-card rounded-2xl border-2 border-tele overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
+                <!-- Card TELE com cor roxa e borda padrão -->
+                <a href="https://paulothemonf.pythonanywhere.com/login" class="group block bg-card rounded-2xl border border-borda overflow-hidden hover-scale transition-all duration-300 cursor-pointer">
                     <div class="p-6 lg:p-8 text-center">
-                        <!-- Ícone com background e cor laranja -->
-                        <div class="w-14 h-14 bg-tele/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform mx-auto">
-                            <i class="fa fa-wifi text-3xl text-tele"></i>
+                        <!-- Ícone com fundo roxo e ícone roxo -->
+                        <div class="w-14 h-14 bg-roxo-tele/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform mx-auto">
+                            <i class="fa fa-wifi text-3xl text-roxo-tele"></i>
                         </div>
-                        <!-- Título em laranja -->
-                        <h3 class="text-2xl font-bold text-tele mb-3">TELE</h3>
+                        <!-- Título em roxo -->
+                        <h3 class="text-2xl font-bold text-roxo-tele mb-3">TELE</h3>
                         <p class="text-texto_claro text-sm leading-relaxed mb-6 text-left">
                             Rádio interna, transmissão ao vivo e comunicação instantânea
                         </p>
-                        <!-- Link com cor laranja -->
-                        <span class="inline-flex items-center gap-2 text-tele font-medium hover:gap-3 transition-all justify-center w-full">
+                        <!-- Link com cor roxa -->
+                        <span class="inline-flex items-center gap-2 text-roxo-tele font-medium hover:gap-3 transition-all justify-center w-full">
                             Acessar <i class="fa fa-arrow-right text-sm"></i>
                         </span>
                     </div>
